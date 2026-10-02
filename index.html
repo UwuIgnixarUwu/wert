@@ -1764,6 +1764,332 @@ header{
         font-size:12px;
     }
 }
+/* =========================================================
+   ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ ЭКРАНА ПРИЗЁРА
+========================================================= */
+
+/* ЗАГОЛОВОК */
+
+.winner-page .winner-place-title{
+    position:relative !important;
+
+    width:100% !important;
+
+    height:auto !important;
+
+    margin:10px 0 15px !important;
+
+    padding:0 !important;
+
+    text-align:center !important;
+
+    z-index:30 !important;
+
+    transform:none !important;
+}
+
+.winner-page .winner-place-title h2{
+    position:relative !important;
+
+    display:block !important;
+
+    width:100% !important;
+
+    margin:8px 0 0 !important;
+
+    padding:0 !important;
+
+    line-height:1.05 !important;
+
+    transform:none !important;
+
+    z-index:30 !important;
+}
+
+
+/* =========================================================
+   КОНТЕЙНЕР КУБКА
+
+   РЕАЛЬНАЯ ВЫСОТА 105px.
+   НИКАКИХ SCALE.
+========================================================= */
+
+.winner-page .winner-trophy{
+    position:relative !important;
+
+    display:flex !important;
+
+    align-items:flex-start !important;
+
+    justify-content:center !important;
+
+    width:100% !important;
+
+    height:110px !important;
+
+    min-height:110px !important;
+
+    margin:0 0 18px !important;
+
+    padding:0 !important;
+
+    overflow:visible !important;
+
+    transform:none !important;
+
+    z-index:20 !important;
+}
+
+
+/* =========================================================
+   НОВЫЙ КУБОК
+========================================================= */
+
+.winner-cup{
+    position:relative;
+
+    width:100px;
+    height:105px;
+
+    flex:0 0 100px;
+
+    margin:0;
+
+    transform:none !important;
+
+    filter:
+        drop-shadow(
+            0 10px 15px
+            rgba(0,0,0,.30)
+        );
+}
+
+
+/* РУЧКИ */
+
+.winner-cup-handles{
+    position:absolute;
+
+    left:8px;
+    top:10px;
+
+    width:84px;
+    height:48px;
+
+    border-left:9px solid #d99720;
+    border-right:9px solid #d99720;
+
+    border-radius:15px 15px 25px 25px;
+}
+
+
+/* ЧАША */
+
+.winner-cup-body{
+    position:absolute;
+
+    left:25px;
+    top:0;
+
+    width:50px;
+    height:53px;
+
+    border-radius:
+        5px 5px
+        24px 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b87310 0%,
+            #ffd85f 30%,
+            #fff0a2 50%,
+            #e8a621 75%,
+            #a85e08 100%
+        );
+
+    box-shadow:
+        inset 0 -5px 8px
+        rgba(130,70,0,.25);
+}
+
+
+/* ЗВЕЗДА / НОМЕР */
+
+.winner-cup-star{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    text-shadow:
+        0 0 8px
+        rgba(255,255,255,.9);
+}
+
+
+/* НОЖКА */
+
+.winner-cup-stem{
+    position:absolute;
+
+    left:45px;
+    top:50px;
+
+    width:10px;
+    height:27px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a76109,
+            #ffe071,
+            #ae680a
+        );
+}
+
+
+/* ОСНОВАНИЕ */
+
+.winner-cup-base{
+    position:absolute;
+
+    left:25px;
+    top:75px;
+
+    width:50px;
+    height:18px;
+
+    border-radius:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8c4d07,
+            #e6a72a,
+            #ffe17a,
+            #95530a
+        );
+
+    box-shadow:
+        0 4px 8px
+        rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   ФОТО И ДИПЛОМ ГАРАНТИРОВАННО НИЖЕ
+========================================================= */
+
+.winner-page .winner-main{
+    position:relative !important;
+
+    clear:both !important;
+
+    margin-top:0 !important;
+
+    transform:none !important;
+
+    z-index:10 !important;
+}
+
+
+/* =========================================================
+   УБИВАЕМ СТАРЫЕ ПРАВИЛА ДЛЯ КУБКА
+========================================================= */
+
+.winner-page .winner-trophy .trophy{
+    transform:none !important;
+}
+
+
+/* =========================================================
+   НИЗКИЙ ЭКРАН — КАК У ТЕБЯ НА СКРИНЕ
+========================================================= */
+
+@media(max-height:850px) and (min-width:851px){
+
+    .winner-page .winner-place-title{
+        margin:
+            4px 0 10px !important;
+    }
+
+    .winner-page .winner-place-title h2{
+        font-size:46px !important;
+
+        margin-top:5px !important;
+    }
+
+    .winner-page .winner-trophy{
+        height:100px !important;
+
+        min-height:100px !important;
+
+        margin:
+            0 0 12px !important;
+    }
+
+    .winner-cup{
+        width:90px;
+        height:95px;
+
+        flex-basis:90px;
+    }
+
+}
+
+
+/* =========================================================
+   ТЕЛЕФОН
+========================================================= */
+
+@media(max-width:850px){
+
+    .winner-page .winner-place-title{
+        margin:
+            8px 0 12px !important;
+    }
+
+    .winner-page .winner-trophy{
+        height:105px !important;
+
+        min-height:105px !important;
+
+        margin:
+            0 0 15px !important;
+    }
+
+}
+
+
+/* =========================================================
+   МАЛЕНЬКИЙ ТЕЛЕФОН
+========================================================= */
+
+@media(max-width:520px){
+
+    .winner-page .winner-place-title h2{
+        font-size:40px !important;
+    }
+
+    .winner-page .winner-trophy{
+        height:100px !important;
+
+        min-height:100px !important;
+    }
+
+}
 </style>
 </head>
 
@@ -2521,7 +2847,7 @@ let currentPeople = [];
    TROPHY
 ========================================================= */
 
-function trophyHTML(place){
+function trophyHTML(place, winnerMode = false){
 
     if(place > 3){
         return "";
@@ -2535,6 +2861,29 @@ function trophyHTML(place){
 
     if(place === 3){
         star = "Ⅲ";
+    }
+
+    if(winnerMode){
+
+        return `
+            <div class="winner-cup">
+
+                <div class="winner-cup-handles"></div>
+
+                <div class="winner-cup-body">
+
+                    <div class="winner-cup-star">
+                        ${star}
+                    </div>
+
+                </div>
+
+                <div class="winner-cup-stem"></div>
+
+                <div class="winner-cup-base"></div>
+
+            </div>
+        `;
     }
 
     return `
@@ -2854,9 +3203,10 @@ function renderWinner(){
         );
 
     trophy.innerHTML =
-        trophyHTML(
-            currentPlace
-        );
+    trophyHTML(
+        currentPlace,
+        true
+    );
 
     /* НАЗАД */
 
