@@ -1,3417 +1,3149 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#06070b">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061a35">
 
-  <title>Награждение</title>
+<title>Панорама педагогических идей — Өрлеу 2026</title>
 
-  <!-- SUPABASE -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+:root{
+    --navy:#071a35;
+    --navy2:#0b294d;
+    --blue:#087dbd;
+    --blue2:#14a7d5;
+    --cyan:#56c6e3;
+    --gold:#ffd86b;
+    --gold2:#e5a82d;
+}
 
-    :root {
-      --bg: #06070b;
-      --card: rgba(255,255,255,.055);
-      --border: rgba(255,255,255,.09);
-      --text: #f7f7f8;
-      --muted: #9298a6;
-      --gold: #f6c453;
-      --gold2: #ffdf8a;
-      --danger: #ff5b6e;
-    }
+html,body{
+    min-height:100%;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body{
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    background:#f7fbfe;
+    color:var(--navy);
+    overflow-x:hidden;
+}
 
-    body {
-      min-height: 100vh;
+button{
+    font:inherit;
+}
 
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+/* =========================================================
+   ГЛАВНЫЙ ФОН
+========================================================= */
 
-      background:
+.site-bg{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    overflow:hidden;
+
+    background:
         radial-gradient(
-          circle at 50% -10%,
-          rgba(246,196,83,.14),
-          transparent 30%
+            circle at 10% 10%,
+            rgba(37,175,221,.14),
+            transparent 28%
         ),
         radial-gradient(
-          circle at 100% 30%,
-          rgba(107,80,255,.08),
-          transparent 30%
+            circle at 90% 30%,
+            rgba(12,109,175,.11),
+            transparent 30%
         ),
-        #06070b;
-
-      color: var(--text);
-
-      overflow-x: hidden;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      width: 100%;
-      height: 80px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 7%;
-
-      border-bottom: 1px solid rgba(255,255,255,.06);
-
-      background: rgba(6,7,11,.72);
-
-      backdrop-filter: blur(18px);
-
-      position: sticky;
-      top: 0;
-
-      z-index: 100;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-
-      gap: 13px;
-
-      font-weight: 800;
-
-      letter-spacing: -.4px;
-
-      font-size: 19px;
-    }
-
-    .logo-icon {
-      width: 39px;
-      height: 39px;
-
-      border-radius: 12px;
-
-      display: grid;
-      place-items: center;
-
-      color: #111;
-
-      font-size: 19px;
-
-      background:
         linear-gradient(
-          135deg,
-          #fff2ba,
-          #e9a92f
+            145deg,
+            #ffffff 0%,
+            #f4fbff 55%,
+            #edf8fd 100%
+        );
+}
+
+.grid-pattern{
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(9,72,120,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(9,72,120,.035) 1px,
+            transparent 1px
         );
 
-      box-shadow:
-        0 8px 25px rgba(246,196,83,.18);
-    }
+    background-size:42px 42px;
+}
 
-    .admin-open {
-      border: 1px solid rgba(255,255,255,.09);
+.square{
+    position:absolute;
+    width:60px;
+    height:60px;
+    transform:rotate(14deg);
+    opacity:.13;
+}
 
-      color: #a5aab5;
+.s1{
+    background:#0b86c6;
+    left:4%;
+    top:15%;
+}
 
-      background: rgba(255,255,255,.04);
+.s2{
+    background:#28b9dc;
+    left:10%;
+    top:23%;
+    width:32px;
+    height:32px;
+}
 
-      padding: 10px 15px;
+.s3{
+    background:#173d69;
+    right:7%;
+    top:13%;
+    width:80px;
+    height:80px;
+}
 
-      border-radius: 12px;
+.s4{
+    background:#16a5d2;
+    right:15%;
+    top:30%;
+    width:38px;
+    height:38px;
+}
 
-      transition: .25s;
-    }
+.s5{
+    background:#17416f;
+    left:8%;
+    bottom:12%;
+    width:90px;
+    height:90px;
+}
 
-    .admin-open:hover {
-      color: white;
+.s6{
+    background:#24b5d7;
+    right:5%;
+    bottom:9%;
+    width:70px;
+    height:70px;
+}
 
-      border-color: rgba(255,255,255,.2);
-    }
+/* =========================================================
+   HEADER
+========================================================= */
 
-    /* =========================
-       HERO
-    ========================= */
+header{
+    height:86px;
+    padding:0 6%;
 
-    .hero {
-      padding: 78px 20px 42px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-      text-align: center;
-    }
+    border-bottom:1px solid rgba(7,55,93,.08);
 
-    .hero-medal {
-      width: 72px;
-      height: 72px;
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(18px);
+}
 
-      margin: 0 auto 25px;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
 
-      border-radius: 24px;
+.brand-symbol{
+    width:46px;
+    height:46px;
 
-      display: grid;
-      place-items: center;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px;
 
-      font-size: 34px;
+    transform:rotate(12deg);
+}
 
-      background:
+.brand-symbol span{
+    border-radius:2px;
+}
+
+.brand-symbol span:nth-child(1){
+    background:#183e6b;
+}
+
+.brand-symbol span:nth-child(2){
+    background:#48b7dd;
+}
+
+.brand-symbol span:nth-child(3){
+    background:#0c87c7;
+}
+
+.brand-symbol span:nth-child(4){
+    background:#82c6e7;
+}
+
+.brand-title{
+    font-size:15px;
+    font-weight:900;
+    letter-spacing:.8px;
+}
+
+.brand-sub{
+    margin-top:3px;
+    font-size:11px;
+    color:#648098;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+}
+
+.year{
+    padding:9px 16px;
+    border-radius:100px;
+
+    color:#0d679d;
+
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+
+    border:1px solid rgba(14,132,190,.16);
+
+    background:rgba(19,155,207,.07);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    max-width:1250px;
+    margin:auto;
+    padding:75px 30px 58px;
+    text-align:center;
+}
+
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    padding:9px 16px;
+
+    border-radius:100px;
+
+    background:#e8f7fd;
+
+    border:1px solid #d2eef9;
+
+    color:#0874ac;
+
+    font-size:12px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.hero-label::before{
+    content:"";
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#12a8d4;
+
+    box-shadow:0 0 12px #12a8d4;
+}
+
+.hero h1{
+    max-width:950px;
+
+    margin:23px auto 0;
+
+    font-size:clamp(42px,6.4vw,84px);
+
+    line-height:.96;
+
+    letter-spacing:-4px;
+
+    color:#071c37;
+}
+
+.hero h1 span{
+    display:block;
+
+    margin-top:11px;
+
+    color:#1189bd;
+
+    font-weight:500;
+}
+
+.hero-line{
+    width:min(520px,80%);
+    height:3px;
+
+    margin:31px auto 0;
+
+    background:
         linear-gradient(
-          145deg,
-          rgba(255,226,144,.18),
-          rgba(255,180,45,.06)
+            90deg,
+            transparent,
+            #13a6d3,
+            #173e69,
+            transparent
         );
+}
 
-      border:
-        1px solid rgba(255,215,120,.2);
+.hero-description{
+    margin-top:22px;
 
-      box-shadow:
-        0 20px 60px rgba(255,187,45,.1),
-        inset 0 0 30px rgba(255,220,130,.05);
-    }
+    color:#688197;
 
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 76px);
+    font-size:15px;
+}
 
-      letter-spacing: -3px;
+/* =========================================================
+   МЕСТА
+========================================================= */
 
-      line-height: .95;
+.places{
+    width:min(1180px,calc(100% - 30px));
 
-      font-weight: 850;
+    margin:10px auto 110px;
+}
 
-      background:
-        linear-gradient(
-          180deg,
-          #fff,
-          #aeb1b8
-        );
+/* =========================================================
+   1 МЕСТО
+========================================================= */
 
-      -webkit-background-clip: text;
+.first-place{
+    min-height:285px;
 
-      color: transparent;
-    }
+    margin-bottom:20px;
 
-    .hero p {
-      margin-top: 20px;
+    position:relative;
 
-      color: var(--muted);
+    overflow:hidden;
 
-      font-size: 16px;
-    }
+    display:flex;
+    align-items:center;
 
-    /* =========================
-       STATUS
-    ========================= */
+    padding:45px 55px;
 
-    .status {
-      width: min(900px, calc(100% - 32px));
+    border-radius:38px;
 
-      margin: 10px auto 20px;
+    cursor:pointer;
 
-      display: none;
+    border:1px solid rgba(255,220,110,.28);
 
-      padding: 14px 17px;
-
-      border-radius: 14px;
-
-      font-size: 13px;
-    }
-
-    .status.error {
-      display: block;
-
-      color: #ff98a4;
-
-      border:
-        1px solid rgba(255,91,110,.2);
-
-      background:
-        rgba(255,91,110,.08);
-    }
-
-    /* =========================
-       LOADING
-    ========================= */
-
-    .loading {
-      text-align: center;
-
-      padding: 70px 20px;
-
-      color: #777d88;
-    }
-
-    .spinner {
-      width: 34px;
-      height: 34px;
-
-      margin: 0 auto 15px;
-
-      border-radius: 50%;
-
-      border:
-        3px solid rgba(255,255,255,.08);
-
-      border-top-color: #f6c453;
-
-      animation:
-        spin .8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* =========================
-       RANKING
-    ========================= */
-
-    .ranking {
-      width:
-        min(900px, calc(100% - 32px));
-
-      margin:
-        20px auto 100px;
-    }
-
-    .person-card {
-      position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 19px;
-
-      width: 100%;
-
-      min-height: 104px;
-
-      margin-bottom: 13px;
-
-      padding: 15px 22px;
-
-      background: var(--card);
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 23px;
-
-      cursor: pointer;
-
-      transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
-
-      overflow: hidden;
-    }
-
-    .person-card:hover {
-      transform:
-        translateY(-3px);
-
-      border-color:
-        rgba(255,255,255,.17);
-
-      background:
-        rgba(255,255,255,.075);
-    }
-
-    .person-card.first {
-      background:
-        linear-gradient(
-          100deg,
-          rgba(246,196,83,.13),
-          rgba(255,255,255,.04)
-        );
-
-      border-color:
-        rgba(246,196,83,.27);
-    }
-
-    .person-card.second {
-      background:
-        linear-gradient(
-          100deg,
-          rgba(190,199,216,.09),
-          rgba(255,255,255,.035)
-        );
-    }
-
-    .person-card.third {
-      background:
-        linear-gradient(
-          100deg,
-          rgba(194,125,71,.09),
-          rgba(255,255,255,.035)
-        );
-    }
-
-    .place {
-      width: 60px;
-
-      flex-shrink: 0;
-
-      text-align: center;
-    }
-
-    .place-number {
-      font-size: 25px;
-
-      font-weight: 850;
-
-      letter-spacing: -1px;
-    }
-
-    .first .place-number {
-      color: #ffd96c;
-    }
-
-    .second .place-number {
-      color: #d7dce5;
-    }
-
-    .third .place-number {
-      color: #d59669;
-    }
-
-    .place-text {
-      display: block;
-
-      margin-top: 2px;
-
-      color: #777d89;
-
-      font-size: 11px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1px;
-    }
-
-    .avatar {
-      width: 68px;
-      height: 68px;
-
-      border-radius: 19px;
-
-      object-fit: cover;
-
-      background: #15171d;
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      flex-shrink: 0;
-    }
-
-    .avatar-placeholder {
-      width: 68px;
-      height: 68px;
-
-      border-radius: 19px;
-
-      display: grid;
-      place-items: center;
-
-      background: #12141a;
-
-      color: #555b67;
-
-      font-size: 24px;
-
-      flex-shrink: 0;
-    }
-
-    .person-info {
-      flex: 1;
-
-      min-width: 0;
-    }
-
-    .person-name {
-      font-size: 19px;
-
-      font-weight: 720;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-
-      white-space: nowrap;
-    }
-
-    .person-sub {
-      margin-top: 6px;
-
-      color: #777d88;
-
-      font-size: 13px;
-    }
-
-    .arrow {
-      width: 37px;
-      height: 37px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      color: #858a95;
-
-      background:
-        rgba(255,255,255,.045);
-
-      font-size: 18px;
-
-      transition: .2s;
-    }
-
-    .person-card:hover .arrow {
-      transform:
-        translateX(3px);
-
-      color: white;
-    }
-
-    .empty {
-      text-align: center;
-
-      padding: 80px 20px;
-
-      color: #6f7480;
-    }
-
-    .empty-icon {
-      font-size: 45px;
-
-      margin-bottom: 15px;
-    }
-
-    /* =========================
-       PERSON PAGE
-    ========================= */
-
-    .person-page {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 500;
-
-      overflow-y: auto;
-
-      background:
+    background:
         radial-gradient(
-          circle at 50% 0%,
-          rgba(246,196,83,.18),
-          transparent 30%
+            circle at 80% 40%,
+            rgba(61,196,232,.28),
+            transparent 30%
         ),
-        #06070b;
-
-      opacity: 0;
-
-      visibility: hidden;
-
-      transform:
-        scale(1.02);
-
-      transition: .35s;
-    }
-
-    .person-page.active {
-      opacity: 1;
-
-      visibility: visible;
-
-      transform: scale(1);
-    }
-
-    .back-button {
-      position: fixed;
-
-      left: 25px;
-      top: 24px;
-
-      z-index: 530;
-
-      height: 46px;
-
-      padding: 0 18px;
-
-      border-radius: 14px;
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      color: white;
-
-      background:
-        rgba(15,16,21,.75);
-
-      backdrop-filter:
-        blur(15px);
-    }
-
-    .profile-container {
-      width:
-        min(760px, calc(100% - 30px));
-
-      margin: 0 auto;
-
-      padding:
-        100px 0 80px;
-
-      text-align: center;
-
-      position: relative;
-
-      z-index: 510;
-    }
-
-    .big-place {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      margin-bottom: 22px;
-
-      padding: 9px 16px;
-
-      border-radius: 100px;
-
-      color: #f8d77d;
-
-      background:
-        rgba(246,196,83,.1);
-
-      border:
-        1px solid rgba(246,196,83,.2);
-
-      font-size: 14px;
-
-      font-weight: 700;
-    }
-
-    .big-photo {
-      width: 230px;
-      height: 230px;
-
-      border-radius: 42px;
-
-      object-fit: cover;
-
-      background: #111318;
-
-      border:
-        1px solid rgba(255,255,255,.13);
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.5),
-        0 0 70px rgba(246,196,83,.07);
-    }
-
-    .big-placeholder {
-      width: 230px;
-      height: 230px;
-
-      margin: auto;
-
-      border-radius: 42px;
-
-      display: grid;
-      place-items: center;
-
-      font-size: 70px;
-
-      color: #4e535e;
-
-      background: #111318;
-
-      border:
-        1px solid rgba(255,255,255,.1);
-    }
-
-    .profile-name {
-      margin-top: 28px;
-
-      font-size:
-        clamp(29px, 6vw, 48px);
-
-      line-height: 1.08;
-
-      letter-spacing: -1.7px;
-    }
-
-    .certificate-title {
-      margin:
-        70px 0 20px;
-
-      color: #9297a2;
-
-      text-transform:
-        uppercase;
-
-      letter-spacing:
-        2.5px;
-
-      font-size: 12px;
-
-      font-weight: 700;
-    }
-
-    .diploma {
-      width: 100%;
-
-      max-height: 900px;
-
-      object-fit: contain;
-
-      border-radius: 24px;
-
-      background: white;
-
-      box-shadow:
-        0 35px 100px rgba(0,0,0,.45);
-
-      cursor: zoom-in;
-    }
-
-    .no-diploma {
-      padding: 80px 20px;
-
-      border:
-        1px dashed rgba(255,255,255,.1);
-
-      border-radius: 24px;
-
-      color: #686e79;
-    }
-
-    /* =========================
-       FIREWORKS
-    ========================= */
-
-    #fireworks {
-      position: fixed;
-
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      z-index: 505;
-
-      pointer-events: none;
-    }
-
-    /* =========================
-       LOGIN
-    ========================= */
-
-    .login {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 1200;
-
-      display: none;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 20px;
-
-      background:
-        rgba(0,0,0,.75);
-
-      backdrop-filter:
-        blur(15px);
-    }
-
-    .login.active {
-      display: flex;
-    }
-
-    .login-box {
-      width:
-        min(390px, 100%);
-
-      padding: 32px;
-
-      border-radius: 25px;
-
-      background: #101116;
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      box-shadow:
-        0 30px 100px rgba(0,0,0,.5);
-    }
-
-    .login-icon {
-      width: 55px;
-      height: 55px;
-
-      display: grid;
-      place-items: center;
-
-      margin-bottom: 20px;
-
-      border-radius: 17px;
-
-      background:
-        rgba(246,196,83,.1);
-
-      font-size: 25px;
-    }
-
-    .login-box h2 {
-      font-size: 24px;
-    }
-
-    .login-box p {
-      color: #7f8490;
-
-      margin:
-        8px 0 20px;
-
-      font-size: 14px;
-    }
-
-    .login-box input {
-      width: 100%;
-
-      height: 47px;
-
-      padding: 0 14px;
-
-      border:
-        1px solid rgba(255,255,255,.09);
-
-      border-radius: 12px;
-
-      background: #101217;
-
-      color: white;
-
-      outline: none;
-    }
-
-    .login-error {
-      color: #ff7484;
-
-      font-size: 13px;
-
-      margin-top: 10px;
-
-      display: none;
-    }
-
-    .login-buttons {
-      display: flex;
-
-      gap: 10px;
-
-      margin-top: 18px;
-    }
-
-    .login-buttons button {
-      flex: 1;
-
-      height: 45px;
-
-      border-radius: 12px;
-    }
-
-    .cancel {
-      border:
-        1px solid rgba(255,255,255,.09);
-
-      color: #aaaeb8;
-
-      background:
-        transparent;
-    }
-
-    .enter {
-      border: 0;
-
-      font-weight: 750;
-
-      color: #17130b;
-
-      background:
         linear-gradient(
-          135deg,
-          #ffe39a,
-          #eab03d
+            120deg,
+            #071c39 0%,
+            #0a3e69 55%,
+            #0c83b3 130%
         );
-    }
 
-    /* =========================
-       ADMIN
-    ========================= */
+    color:white;
 
-    .admin {
-      position: fixed;
+    box-shadow:
+        0 35px 90px rgba(8,52,88,.22);
 
-      inset: 0;
+    transition:.35s;
+}
 
-      z-index: 1000;
+.first-place:hover{
+    transform:translateY(-7px) scale(1.005);
 
-      background: #08090d;
+    box-shadow:
+        0 45px 110px rgba(8,52,88,.3);
+}
 
-      overflow-y: auto;
+.first-place::before{
+    content:"";
 
-      display: none;
-    }
+    position:absolute;
 
-    .admin.active {
-      display: block;
-    }
+    width:430px;
+    height:430px;
 
-    .admin-header {
-      height: 75px;
+    right:-100px;
+    top:-190px;
 
-      padding: 0 6%;
+    border-radius:50%;
 
-      display: flex;
+    border:70px solid rgba(255,255,255,.035);
+}
 
-      align-items: center;
+.first-content{
+    position:relative;
 
-      justify-content: space-between;
+    z-index:3;
 
-      border-bottom:
-        1px solid rgba(255,255,255,.07);
+    flex:1;
+}
 
-      background:
-        rgba(8,9,13,.9);
+.place-small{
+    color:#ffe39a;
 
-      backdrop-filter:
-        blur(20px);
+    font-size:12px;
+    font-weight:800;
 
-      position: sticky;
+    letter-spacing:3px;
 
-      top: 0;
+    text-transform:uppercase;
+}
 
-      z-index: 20;
-    }
+.first-number{
+    margin-top:7px;
 
-    .admin-header h2 {
-      font-size: 19px;
-    }
+    font-size:clamp(70px,10vw,125px);
 
-    .close-admin {
-      border: 0;
+    line-height:.85;
 
-      background: #17191f;
+    font-weight:950;
 
-      color: #bbbfc7;
+    letter-spacing:-7px;
 
-      padding:
-        10px 16px;
+    color:#fff;
+}
 
-      border-radius: 11px;
-    }
+.first-number span{
+    font-size:.28em;
 
-    .admin-content {
-      width:
-        min(1000px, calc(100% - 30px));
+    letter-spacing:0;
 
-      margin:
-        40px auto 80px;
-    }
+    color:#bceafb;
+}
 
-    .admin-grid {
-      display: grid;
+.first-text{
+    margin-top:20px;
 
-      grid-template-columns:
-        370px 1fr;
+    color:#b7d6e8;
 
-      gap: 25px;
-    }
+    font-size:14px;
+}
 
-    .panel {
-      border:
-        1px solid rgba(255,255,255,.08);
+.first-arrow{
+    position:absolute;
 
-      background:
-        rgba(255,255,255,.035);
+    right:35px;
+    bottom:30px;
 
-      border-radius: 22px;
+    width:48px;
+    height:48px;
 
-      padding: 25px;
-    }
+    border-radius:50%;
 
-    .panel h3 {
-      font-size: 18px;
+    display:grid;
+    place-items:center;
 
-      margin-bottom: 22px;
-    }
+    background:rgba(255,255,255,.11);
 
-    label {
-      display: block;
+    border:1px solid rgba(255,255,255,.14);
 
-      margin:
-        17px 0 8px;
+    font-size:24px;
+}
 
-      font-size: 12px;
+/* =========================================================
+   КУБОК
+========================================================= */
 
-      color: #9297a2;
-    }
+.trophy-area{
+    width:290px;
 
-    .panel input {
-      width: 100%;
+    display:flex;
+    justify-content:center;
 
-      height: 47px;
+    position:relative;
 
-      padding:
-        0 14px;
+    z-index:3;
+}
 
-      border:
-        1px solid rgba(255,255,255,.09);
+.trophy{
+    position:relative;
 
-      border-radius: 12px;
+    width:160px;
+    height:190px;
 
-      background: #101217;
+    flex:0 0 auto;
 
-      color: white;
+    filter:
+        drop-shadow(0 25px 28px rgba(0,0,0,.28));
+}
 
-      outline: none;
-    }
+.trophy-cup{
+    position:absolute;
 
-    .panel input:focus {
-      border-color:
-        rgba(246,196,83,.45);
-    }
+    left:35px;
+    top:5px;
 
-    .panel input[type="file"] {
-      height: auto;
+    width:90px;
+    height:85px;
 
-      padding: 13px;
+    border-radius:8px 8px 45px 45px;
 
-      color: #9297a2;
-    }
-
-    .save-button {
-      width: 100%;
-
-      min-height: 49px;
-
-      margin-top: 23px;
-
-      padding: 12px;
-
-      border: 0;
-
-      border-radius: 13px;
-
-      color: #15110a;
-
-      font-weight: 800;
-
-      background:
+    background:
         linear-gradient(
-          135deg,
-          #ffe49a,
-          #eeb23d
+            90deg,
+            #bd7d15,
+            #ffe89a 25%,
+            #f5bd37 52%,
+            #fff1ae 72%,
+            #b9700d
         );
+}
+
+.trophy-cup::before,
+.trophy-cup::after{
+    content:"";
+
+    position:absolute;
+
+    top:13px;
+
+    width:44px;
+    height:48px;
+
+    border:10px solid #e8aa2a;
+}
+
+.trophy-cup::before{
+    left:-38px;
+
+    border-right:0;
+
+    border-radius:30px 0 0 30px;
+}
+
+.trophy-cup::after{
+    right:-38px;
+
+    border-left:0;
+
+    border-radius:0 30px 30px 0;
+}
+
+.trophy-stem{
+    position:absolute;
+
+    left:70px;
+    top:87px;
+
+    width:20px;
+    height:45px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b8700d,
+            #ffd96b,
+            #bd7711
+        );
+}
+
+.trophy-base1{
+    position:absolute;
+
+    left:48px;
+    top:125px;
+
+    width:64px;
+    height:17px;
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ad6710,
+            #ffe58b,
+            #b46b0d
+        );
+}
+
+.trophy-base2{
+    position:absolute;
+
+    left:31px;
+    top:141px;
+
+    width:98px;
+    height:27px;
+
+    border-radius:7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #70410c,
+            #d69522,
+            #ffdc6d,
+            #8c520d
+        );
+}
+
+.trophy-star{
+    position:absolute;
+
+    left:62px;
+    top:28px;
+
+    z-index:5;
+
+    color:white;
+
+    font-size:35px;
+
+    text-shadow:0 0 20px white;
+}
+
+.first-place .trophy{
+    transform:scale(1.28);
+}
+
+/* =========================================================
+   2 + 3 МЕСТО
+========================================================= */
+
+.podium-row{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.podium-card{
+    min-height:205px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+
+    padding:32px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    border:1px solid rgba(12,85,133,.12);
+
+    background:rgba(255,255,255,.78);
+
+    box-shadow:
+        0 18px 60px rgba(19,70,104,.08);
+
+    transition:.3s;
+}
+
+.podium-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 28px 70px rgba(19,70,104,.14);
+}
+
+.podium-card .trophy-area{
+    width:180px;
+}
+
+.second .trophy{
+    transform:scale(.78);
+}
+
+.second .trophy-cup,
+.second .trophy-stem,
+.second .trophy-base1,
+.second .trophy-base2{
+    filter:
+        grayscale(1)
+        brightness(1.35);
+}
+
+.third .trophy{
+    transform:scale(.68);
+}
+
+.third .trophy-cup,
+.third .trophy-stem,
+.third .trophy-base1,
+.third .trophy-base2{
+    filter:
+        sepia(.8)
+        saturate(.8)
+        brightness(.8);
+}
+
+.podium-number{
+    font-size:60px;
+
+    line-height:1;
+
+    font-weight:950;
+
+    letter-spacing:-4px;
+
+    color:#092b4d;
+}
+
+.podium-number span{
+    font-size:18px;
+
+    letter-spacing:0;
+
+    color:#5e849d;
+}
+
+.podium-info{
+    margin-top:10px;
+
+    color:#7790a3;
+
+    font-size:13px;
+}
+
+/* =========================================================
+   ЭКРАН ПРИЗЁРА
+
+   ТУТ УЖЕ НЕТ GIF-ФОНА.
+   ЭТО ОБЫЧНЫЙ ИЗНАЧАЛЬНЫЙ ТЁМНЫЙ ФОН.
+========================================================= */
+
+.winner-page{
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    visibility:hidden;
+
+    opacity:0;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #135e91 0%,
+            #071d3a 45%,
+            #041226 100%
+        );
+
+    color:white;
+
+    transition:
+        opacity .45s ease,
+        visibility .45s ease;
+}
+
+.winner-page.active{
+    visibility:visible;
+    opacity:1;
+}
+
+/* =========================================================
+   GIF ЗАСТАВКА
+
+   ОНА ПОКАЗЫВАЕТСЯ ПЕРВОЙ.
+   ПОСЛЕ КЛИКА ИСЧЕЗАЕТ.
+========================================================= */
+
+.winner-intro{
+    position:absolute;
+
+    inset:0;
+
+    z-index:100;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#041226;
+
+    cursor:pointer;
+
+    opacity:1;
+
+    visibility:visible;
+
+    transition:
+        opacity .65s ease,
+        visibility .65s ease;
+}
+
+.winner-intro.hide{
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+}
+
+/* Размытый GIF сзади */
+
+.winner-intro-blur{
+    position:absolute;
+
+    inset:-60px;
+
+    width:calc(100% + 120px);
+    height:calc(100% + 120px);
+
+    object-fit:cover;
+
+    object-position:center;
+
+    filter:
+        blur(40px)
+        brightness(.48)
+        saturate(1.2);
+
+    transform:scale(1.08);
+}
+
+/* Основной GIF */
+
+.winner-intro-main{
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    filter:brightness(.95);
+}
+
+/* Лёгкое затемнение */
+
+.winner-intro::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:3;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,8,20,.05),
+            rgba(0,8,20,.02) 55%,
+            rgba(0,8,20,.48)
+        );
+}
+
+/* Текст на GIF */
+
+.winner-intro-text{
+    position:absolute;
+
+    z-index:5;
+
+    left:50%;
+    bottom:42px;
+
+    transform:translateX(-50%);
+
+    padding:13px 23px;
+
+    border-radius:100px;
+
+    color:white;
+
+    background:rgba(2,19,45,.70);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.25);
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    animation:introPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes introPulse{
+    0%,100%{
+        transform:
+            translateX(-50%)
+            scale(1);
+
+        opacity:.8;
     }
 
-    .save-button:disabled {
-      opacity: .55;
+    50%{
+        transform:
+            translateX(-50%)
+            scale(1.05);
 
-      cursor: wait;
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   ФЕЙЕРВЕРКИ
+
+   СКРЫТЫ, ПОКА ПОКАЗЫВАЕТСЯ GIF.
+========================================================= */
+
+.fireworks-video{
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    pointer-events:none;
+
+    mix-blend-mode:screen;
+
+    opacity:.9;
+}
+
+.winner-overlay{
+    position:absolute;
+
+    inset:0;
+
+    z-index:3;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 20%,
+            rgba(1,12,31,.05) 55%,
+            rgba(1,12,31,.25) 100%
+        );
+}
+
+/* =========================================================
+   КОНТЕНТ ПРИЗЁРА
+========================================================= */
+
+.winner-scroll{
+    position:absolute;
+
+    inset:0;
+
+    z-index:10;
+
+    overflow-y:auto;
+}
+
+.winner-content{
+    width:min(1450px,calc(100% - 50px));
+
+    min-height:100%;
+
+    margin:auto;
+
+    padding:25px 0 80px;
+}
+
+.winner-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+}
+
+.winner-logo{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:8px 13px;
+
+    border-radius:15px;
+
+    background:rgba(3,27,61,.38);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.13);
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.5);
+}
+
+.close-winner{
+    width:46px;
+    height:46px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.20);
+
+    background:rgba(3,27,61,.48);
+
+    color:white;
+
+    font-size:19px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+    transition:.2s;
+}
+
+.close-winner:hover{
+    background:rgba(9,76,126,.75);
+
+    transform:scale(1.05);
+}
+
+/* =========================================================
+   МЕСТО
+
+   ВАЖНО:
+   ТЕПЕРЬ ТЕКСТ НЕ ЛЕЗЕТ ПОД КУБОК.
+========================================================= */
+
+.winner-place-title{
+    position:relative;
+
+    z-index:10;
+
+    text-align:center;
+
+    margin:5px 0 12px;
+}
+
+.winner-place-title .mini{
+    display:inline-block;
+
+    padding:6px 13px;
+
+    border-radius:100px;
+
+    color:#d3f4ff;
+
+    background:rgba(3,35,75,.36);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.winner-place-title h2{
+    margin-top:7px;
+
+    font-size:clamp(38px,5vw,68px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    color:white;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.75);
+}
+
+.place-1 .winner-place-title h2{
+    color:#ffe18a;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.7),
+        0 0 35px rgba(255,212,99,.35);
+}
+
+/* =========================================================
+   КУБОК ПРИЗЁРА
+
+   БОЛЬШЕ НЕТ translateY(-85px)
+========================================================= */
+
+.winner-trophy{
+    position:relative;
+
+    z-index:9;
+
+    height:105px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:center;
+
+    margin:0 auto 18px;
+
+    overflow:visible;
+}
+
+.winner-trophy .trophy{
+    transform:scale(.50);
+
+    transform-origin:top center;
+}
+
+.place-1 .winner-trophy .trophy{
+    transform:scale(.56);
+}
+
+/* =========================================================
+   ФОТО + ДИПЛОМ
+========================================================= */
+
+.winner-main{
+    display:grid;
+
+    grid-template-columns:
+        minmax(280px,.68fr)
+        minmax(460px,1.32fr);
+
+    gap:25px;
+
+    align-items:stretch;
+
+    max-width:1250px;
+
+    margin:auto;
+}
+
+.person-panel,
+.diploma-panel{
+    border:1px solid rgba(255,255,255,.22);
+
+    background:rgba(2,26,61,.28);
+
+    backdrop-filter:
+        blur(12px)
+        saturate(1.1);
+
+    border-radius:28px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.26);
+}
+
+.place-1 .person-panel,
+.place-1 .diploma-panel{
+    border-color:rgba(255,221,125,.32);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.28),
+        0 0 40px rgba(255,210,90,.06);
+}
+
+/* =========================================================
+   ФОТО
+========================================================= */
+
+.person-panel{
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.person-photo-wrap{
+    width:100%;
+
+    flex:1;
+
+    min-height:390px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d3d65,
+            #09223e
+        );
+}
+
+.person-photo{
+    width:100%;
+    height:100%;
+
+    position:absolute;
+
+    inset:0;
+
+    object-fit:cover;
+}
+
+.person-photo-wrap::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 45%,
+            rgba(2,15,31,.92)
+        );
+}
+
+.person-name{
+    position:absolute;
+
+    z-index:3;
+
+    left:20px;
+    right:20px;
+    bottom:20px;
+
+    font-size:clamp(22px,2.5vw,34px);
+
+    font-weight:850;
+
+    letter-spacing:-1px;
+
+    line-height:1.05;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,.9);
+}
+
+.person-index{
+    margin-top:12px;
+
+    text-align:center;
+
+    color:#c5eaff;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+}
+
+/* =========================================================
+   ДИПЛОМ
+========================================================= */
+
+.diploma-panel{
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:450px;
+}
+
+.diploma-image{
+    display:block;
+
+    max-width:100%;
+
+    max-height:600px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.40);
+
+    cursor:zoom-in;
+}
+
+/* =========================================================
+   НАВИГАЦИЯ
+========================================================= */
+
+.winner-navigation{
+    margin-top:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:13px;
+}
+
+.nav-button{
+    min-width:150px;
+
+    height:50px;
+
+    padding:0 22px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.20);
+
+    color:white;
+
+    background:rgba(3,31,68,.60);
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.2s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+}
+
+.nav-button:hover{
+    transform:translateY(-2px);
+
+    background:rgba(7,60,110,.78);
+}
+
+.nav-button.primary{
+    color:#05213b;
+
+    border:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff8ff,
+            #55c4e3
+        );
+}
+
+.place-1 .nav-button.primary{
+    background:
+        linear-gradient(
+            135deg,
+            #fff1b4,
+            #f3bf45
+        );
+}
+
+.nav-button:disabled{
+    opacity:.25;
+
+    cursor:default;
+
+    transform:none;
+}
+
+/* =========================================================
+   ДИПЛОМ НА ВЕСЬ ЭКРАН
+========================================================= */
+
+.viewer{
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+    background:rgba(0,8,20,.96);
+
+    cursor:zoom-out;
+}
+
+.viewer.active{
+    display:flex;
+}
+
+.viewer img{
+    max-width:96vw;
+
+    max-height:94vh;
+
+    object-fit:contain;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+}
+
+/* =========================================================
+   НОУТБУКИ
+========================================================= */
+
+@media(max-height:850px) and (min-width:851px){
+
+    .winner-content{
+        padding-top:15px;
     }
 
-    .admin-person {
-      display: flex;
-
-      align-items: center;
-
-      gap: 13px;
-
-      padding: 13px;
-
-      margin-bottom: 9px;
-
-      border:
-        1px solid rgba(255,255,255,.07);
-
-      border-radius: 15px;
-
-      background:
-        rgba(255,255,255,.025);
+    .winner-header{
+        margin-bottom:5px;
     }
 
-    .admin-place {
-      width: 37px;
-
-      color: #e9bf5d;
-
-      font-weight: 800;
+    .winner-place-title h2{
+        font-size:46px;
     }
 
-    .admin-person-name {
-      flex: 1;
-
-      font-size: 14px;
+    .winner-trophy{
+        height:85px;
+        margin-bottom:12px;
     }
 
-    .edit-btn,
-    .delete-btn {
-      border: 0;
-
-      border-radius: 9px;
-
-      padding:
-        8px 10px;
+    .winner-trophy .trophy{
+        transform:scale(.42);
     }
 
-    .edit-btn {
-      color: #d5d8df;
-
-      background: #20232b;
+    .place-1 .winner-trophy .trophy{
+        transform:scale(.47);
     }
 
-    .delete-btn {
-      color: #ff8895;
-
-      background:
-        rgba(255,91,110,.1);
+    .person-photo-wrap{
+        min-height:330px;
     }
 
-    /* =========================
-       IMAGE VIEWER
-    ========================= */
-
-    .viewer {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 2000;
-
-      display: none;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 20px;
-
-      background:
-        rgba(0,0,0,.94);
-
-      cursor: zoom-out;
+    .diploma-panel{
+        min-height:390px;
     }
 
-    .viewer.active {
-      display: flex;
+    .diploma-image{
+        max-height:500px;
+    }
+}
+
+/* =========================================================
+   ПЛАНШЕТ / ТЕЛЕФОН
+========================================================= */
+
+@media(max-width:850px){
+
+    header{
+        height:72px;
+
+        padding:0 18px;
     }
 
-    .viewer img {
-      max-width: 96%;
-
-      max-height: 94vh;
-
-      object-fit: contain;
+    .brand-title{
+        font-size:12px;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media(max-width: 750px) {
-
-      header {
-        height: 68px;
-
-        padding:
-          0 18px;
-      }
-
-      .logo {
-        font-size: 16px;
-      }
-
-      .logo-icon {
-        width: 35px;
-        height: 35px;
-      }
-
-      .admin-open {
-        font-size: 12px;
-
-        padding:
-          9px 12px;
-      }
-
-      .hero {
-        padding-top: 52px;
-      }
-
-      .hero h1 {
-        letter-spacing: -2px;
-      }
-
-      .ranking {
-        width:
-          calc(100% - 20px);
-      }
-
-      .person-card {
-        min-height: 88px;
-
-        padding:
-          11px 13px;
-
-        gap: 11px;
-
-        border-radius: 18px;
-      }
-
-      .place {
-        width: 42px;
-      }
-
-      .place-number {
-        font-size: 21px;
-      }
-
-      .avatar,
-      .avatar-placeholder {
-        width: 57px;
-        height: 57px;
-
-        border-radius: 15px;
-      }
-
-      .person-name {
-        font-size: 15px;
-      }
-
-      .person-sub {
-        font-size: 11px;
-      }
-
-      .arrow {
-        width: 31px;
-        height: 31px;
-      }
-
-      .admin-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .panel {
-        padding: 19px;
-      }
-
-      .back-button {
-        top: 15px;
-
-        left: 15px;
-      }
-
-      .profile-container {
-        padding-top: 90px;
-      }
-
-      .big-photo,
-      .big-placeholder {
-        width: 190px;
-        height: 190px;
-
-        border-radius: 34px;
-      }
-
-      .certificate-title {
-        margin-top: 50px;
-      }
-
-      .admin-person {
-        flex-wrap: wrap;
-      }
+    .brand-sub{
+        display:none;
     }
-  </style>
+
+    .brand-symbol{
+        width:38px;
+        height:38px;
+    }
+
+    .year{
+        font-size:10px;
+
+        padding:8px 11px;
+    }
+
+    .hero{
+        padding:55px 20px 38px;
+    }
+
+    .hero h1{
+        letter-spacing:-2.5px;
+    }
+
+    .first-place{
+        min-height:245px;
+
+        padding:32px 25px;
+
+        border-radius:29px;
+    }
+
+    .trophy-area{
+        width:150px;
+    }
+
+    .first-place .trophy{
+        transform:scale(.85);
+    }
+
+    .first-number{
+        letter-spacing:-4px;
+    }
+
+    .podium-row{
+        grid-template-columns:1fr;
+    }
+
+    .winner-intro-main{
+        object-fit:contain;
+    }
+
+    .winner-content{
+        width:calc(100% - 24px);
+
+        padding-top:15px;
+    }
+
+    .winner-main{
+        grid-template-columns:1fr;
+
+        max-width:650px;
+    }
+
+    .winner-place-title{
+        margin-top:10px;
+    }
+
+    .winner-trophy{
+        height:100px;
+    }
+
+    .person-photo-wrap{
+        min-height:480px;
+    }
+
+    .diploma-panel{
+        min-height:auto;
+    }
+
+    .winner-navigation{
+        position:sticky;
+
+        bottom:12px;
+
+        z-index:20;
+
+        padding:8px;
+
+        border-radius:18px;
+
+        background:rgba(2,19,45,.70);
+
+        backdrop-filter:blur(12px);
+    }
+
+    .nav-button{
+        min-width:0;
+
+        flex:1;
+    }
+}
+
+@media(max-width:520px){
+
+    .hero-label{
+        font-size:9px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .first-place{
+        min-height:220px;
+    }
+
+    .trophy-area{
+        position:absolute;
+
+        right:-25px;
+
+        opacity:.75;
+    }
+
+    .first-content{
+        z-index:5;
+    }
+
+    .podium-card{
+        min-height:160px;
+
+        padding:22px;
+    }
+
+    .podium-card .trophy-area{
+        width:130px;
+    }
+
+    .winner-intro-text{
+        bottom:25px;
+
+        max-width:calc(100% - 30px);
+
+        text-align:center;
+
+        white-space:normal;
+
+        font-size:11px;
+    }
+
+    .winner-logo{
+        font-size:9px;
+
+        padding:6px 9px;
+    }
+
+    .winner-place-title h2{
+        font-size:40px;
+
+        letter-spacing:-2px;
+    }
+
+    .winner-trophy{
+        height:90px;
+
+        margin-bottom:10px;
+    }
+
+    .winner-trophy .trophy{
+        transform:scale(.42);
+    }
+
+    .place-1 .winner-trophy .trophy{
+        transform:scale(.46);
+    }
+
+    .person-panel{
+        padding:10px;
+
+        border-radius:22px;
+    }
+
+    .person-photo-wrap{
+        min-height:410px;
+
+        border-radius:17px;
+    }
+
+    .person-name{
+        left:17px;
+        right:17px;
+        bottom:17px;
+    }
+
+    .diploma-panel{
+        padding:10px;
+
+        border-radius:22px;
+    }
+
+    .winner-navigation{
+        gap:7px;
+    }
+
+    .nav-button{
+        height:48px;
+
+        padding:0 10px;
+
+        font-size:12px;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- ======================================================
+     ГЛАВНЫЙ ФОН
+====================================================== -->
+
+<div class="site-bg">
+
+    <div class="grid-pattern"></div>
+
+    <div class="square s1"></div>
+    <div class="square s2"></div>
+    <div class="square s3"></div>
+    <div class="square s4"></div>
+    <div class="square s5"></div>
+    <div class="square s6"></div>
+
+</div>
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
 <header>
 
-  <div class="logo">
+    <div class="brand">
 
-    <div class="logo-icon">
-      ✦
+        <div class="brand-symbol">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div>
+
+            <div class="brand-title">
+                ПАНОРАМА
+            </div>
+
+            <div class="brand-sub">
+                педагогических идей
+            </div>
+
+        </div>
+
     </div>
 
-    <span>
-      Награждение
-    </span>
-
-  </div>
-
-  <button
-    class="admin-open"
-    onclick="showLogin()"
-  >
-    Управление
-  </button>
+    <div class="year">
+        ӨРЛЕУ • 2026
+    </div>
 
 </header>
 
+<!-- ======================================================
+     HERO
+====================================================== -->
 
 <section class="hero">
 
-  <div class="hero-medal">
-    🏆
-  </div>
+    <div class="hero-label">
+        Өрлеу • 2026
+    </div>
 
-  <h1>
-    Награждение
-  </h1>
+    <h1>
 
-  <p>
-    Торжественный список участников
-  </p>
+        ПАНОРАМА
+
+        <span>
+            педагогических идей
+        </span>
+
+    </h1>
+
+    <div class="hero-line"></div>
+
+    <div class="hero-description">
+        Результаты
+    </div>
 
 </section>
 
-
-<div
-  class="status"
-  id="status"
-></div>
-
+<!-- ======================================================
+     МЕСТА
+====================================================== -->
 
 <main
-  class="ranking"
-  id="ranking"
->
+    class="places"
+    id="places"
+></main>
 
-  <div class="loading">
-
-    <div class="spinner"></div>
-
-    Загрузка...
-
-  </div>
-
-</main>
-
-
-<!-- =========================
-     PERSON PAGE
-========================= -->
+<!-- ======================================================
+     ЭКРАН ПРИЗЁРА
+====================================================== -->
 
 <section
-  class="person-page"
-  id="personPage"
+    class="winner-page"
+    id="winnerPage"
 >
 
-  <canvas id="fireworks"></canvas>
-
-  <button
-    class="back-button"
-    onclick="closePerson()"
-  >
-    ← Назад
-  </button>
-
-
-  <div class="profile-container">
+    <!-- ================================================
+         СНАЧАЛА ПОКАЗЫВАЕТСЯ GIF
+    ================================================= -->
 
     <div
-      class="big-place"
-      id="profilePlace"
+        class="winner-intro"
+        id="winnerIntro"
+        onclick="showWinner()"
     >
+
+        <!-- РАЗМЫТЫЙ GIF СЗАДИ -->
+
+        <img
+            class="winner-intro-blur"
+            src="panorama_orleu_2026_animated.gif"
+            alt=""
+        >
+
+        <!-- НОРМАЛЬНЫЙ GIF -->
+
+        <img
+            class="winner-intro-main"
+            src="panorama_orleu_2026_animated.gif"
+            alt=""
+        >
+
+        <div class="winner-intro-text">
+            Нажмите, чтобы увидеть призёра
+        </div>
+
     </div>
 
+    <!-- ================================================
+         ФЕЙЕРВЕРКИ
 
-    <div id="profilePhoto"></div>
+         ОНИ ЗАПУСКАЮТСЯ ПОСЛЕ НАЖАТИЯ НА GIF
+    ================================================= -->
 
+    <video
+        class="fireworks-video"
+        id="fireworksVideo"
+        muted
+        loop
+        playsinline
+    >
+        <source
+            src="fireworks.webm"
+            type="video/webm"
+        >
+    </video>
 
-    <h1
-      class="profile-name"
-      id="profileName"
-    ></h1>
+    <div class="winner-overlay"></div>
 
+    <!-- ================================================
+         САМ ПРИЗЁР
+    ================================================= -->
 
-    <div class="certificate-title">
-      Диплом
+    <div class="winner-scroll">
+
+        <div class="winner-content">
+
+            <!-- HEADER -->
+
+            <div class="winner-header">
+
+                <div class="winner-logo">
+
+                    <div
+                        class="brand-symbol"
+                        style="width:35px;height:35px"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    ПАНОРАМА ПЕДАГОГИЧЕСКИХ ИДЕЙ
+
+                </div>
+
+                <button
+                    class="close-winner"
+                    onclick="goHome()"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+            <!-- МЕСТО -->
+
+            <div class="winner-place-title">
+
+                <div class="mini">
+                    Награждение
+                </div>
+
+                <h2 id="winnerPlace">
+                    1 место
+                </h2>
+
+            </div>
+
+            <!-- КУБОК -->
+
+            <div
+                class="winner-trophy"
+                id="winnerTrophy"
+            ></div>
+
+            <!-- ФОТО + ДИПЛОМ -->
+
+            <div class="winner-main">
+
+                <!-- ФОТО -->
+
+                <div class="person-panel">
+
+                    <div class="person-photo-wrap">
+
+                        <img
+                            class="person-photo"
+                            id="winnerPhoto"
+                            alt=""
+                        >
+
+                        <div
+                            class="person-name"
+                            id="winnerName"
+                        ></div>
+
+                    </div>
+
+                    <div
+                        class="person-index"
+                        id="personIndex"
+                    ></div>
+
+                </div>
+
+                <!-- ДИПЛОМ -->
+
+                <div class="diploma-panel">
+
+                    <img
+                        class="diploma-image"
+                        id="winnerDiploma"
+                        onclick="openDiploma()"
+                        alt="Диплом"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- КНОПКИ -->
+
+            <div class="winner-navigation">
+
+                <button
+                    class="nav-button"
+                    id="prevButton"
+                    onclick="previousWinner()"
+                >
+                    ← Назад
+                </button>
+
+                <button
+                    class="nav-button primary"
+                    id="nextButton"
+                    onclick="nextWinner()"
+                >
+                    Далее →
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
-
-
-    <div id="profileDiploma"></div>
-
-  </div>
 
 </section>
 
-
-<!-- =========================
-     LOGIN
-========================= -->
-
-<div
-  class="login"
-  id="login"
->
-
-  <div class="login-box">
-
-    <div class="login-icon">
-      🔐
-    </div>
-
-    <h2>
-      Вход
-    </h2>
-
-    <p>
-      Введите пароль для доступа к управлению.
-    </p>
-
-    <input
-      type="password"
-      id="password"
-      placeholder="Пароль"
-      onkeydown="
-        if(event.key === 'Enter') {
-          loginAdmin()
-        }
-      "
-    >
-
-    <div
-      class="login-error"
-      id="loginError"
-    >
-      Неверный пароль
-    </div>
-
-
-    <div class="login-buttons">
-
-      <button
-        class="cancel"
-        onclick="hideLogin()"
-      >
-        Отмена
-      </button>
-
-      <button
-        class="enter"
-        onclick="loginAdmin()"
-      >
-        Войти
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     ADMIN
-========================= -->
-
-<section
-  class="admin"
-  id="admin"
->
-
-  <div class="admin-header">
-
-    <h2>
-      Управление
-    </h2>
-
-    <button
-      class="close-admin"
-      onclick="closeAdmin()"
-    >
-      Закрыть
-    </button>
-
-  </div>
-
-
-  <div class="admin-content">
-
-    <div class="admin-grid">
-
-      <!-- FORM -->
-
-      <div class="panel">
-
-        <h3 id="formTitle">
-          Добавить участника
-        </h3>
-
-
-        <label>
-          Место
-        </label>
-
-        <input
-          type="number"
-          id="placeInput"
-          min="1"
-          placeholder="Например: 1"
-        >
-
-
-        <label>
-          Имя и фамилия
-        </label>
-
-        <input
-          type="text"
-          id="nameInput"
-          placeholder="Имя Фамилия"
-        >
-
-
-        <label>
-          Фотография
-        </label>
-
-        <input
-          type="file"
-          id="photoInput"
-          accept="image/*"
-        >
-
-
-        <label>
-          Фото диплома
-        </label>
-
-        <input
-          type="file"
-          id="diplomaInput"
-          accept="image/*"
-        >
-
-
-        <button
-          class="save-button"
-          id="saveButton"
-          onclick="savePerson()"
-        >
-          Сохранить
-        </button>
-
-      </div>
-
-
-      <!-- LIST -->
-
-      <div class="panel">
-
-        <h3>
-          Список
-        </h3>
-
-        <div id="adminList"></div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     IMAGE VIEWER
-========================= -->
+<!-- ======================================================
+     ПРОСМОТР ДИПЛОМА
+====================================================== -->
 
 <div
-  class="viewer"
-  id="viewer"
-  onclick="closeViewer()"
+    class="viewer"
+    id="viewer"
+    onclick="closeViewer()"
 >
 
-  <img
-    id="viewerImage"
-    alt="Диплом"
-  >
+    <img
+        id="viewerImage"
+        alt=""
+    >
 
 </div>
-
 
 <script>
 
-  /* =====================================================
-     SUPABASE
-  ===================================================== */
+/* =========================================================
+   ТВОЙ СПИСОК
 
-  const SUPABASE_URL =
-    "https://ixhgnpcchuiniouwlgpx.supabase.co";
+   СЮДА ВСТАВЛЯЕШЬ СВОЙ СПИСОК.
+   БОЛЬШЕ НИЧЕГО МЕНЯТЬ НЕ НАДО.
 
-  const SUPABASE_KEY =
-    "sb_publishable_FdkU41MMVnn_mDJnZqP6Qw_NmlynCCd";
+   ПРИМЕР:
+
+   {
+       place: 1,
+       name: "Имя человека",
+       photo: "photos/фото.jpg",
+       diploma: "diplomas/диплом.jpg"
+   },
+
+========================================================= */
+
+const winners = [
+    {
+        place: 1,
+
+        name:
+            "Мынбаева Жанар Тасбулатовна",
+
+        photo:
+            "photos/МЫНБАЕВА ЖАНАР ТАСБУЛАТОВНА.jpg",
+
+        diploma:
+            "diplomas/мынбаева жанар.jpeg"
+    },
+
+    {
+        place: 1,
+
+        name:
+            "Блажко Татьяна Петровна",
+
+        photo:
+            "photos/Блажко Татьяна Петровна.jpeg",
+
+        diploma:
+            "diplomas/БЛАЖКО ТАТЬЯНА ПЕТРОВНА.jpg"
+    },
+
+    {
+        place: 1,
+
+        name:
+            "Онгарбаева Перизат Бугубайевна",
+
+        photo:
+            "photos/Оңғарбаева Перизат.jpeg",
+
+        diploma:
+            "diplomas/ПЕРИЗАТ БУГУБАЙЕВНА ОНГАРБАЕВА.jpg" 
+    },
+
+    {
+        place: 1,
+
+        name:
+            "Белогурова Наталья Степановна",
+
+        photo:
+            "photos/Белогурова Наталья Степановна.jpeg",
+
+        diploma:
+            "diplomas/БЕЛОГУРОВА НАТАЛЬЯ СТЕПАНОВНА.jpg"
+    },
+
+    {
+        place: 1,
+
+        name:
+            "Дынько Евгения Артуровна",
+
+        photo:
+            "photos/Дынько Евгения Артуровна 2.jpeg",
+
+        diploma:
+            "diplomas/ДЫНЬКО ЕВГЕНИЯ АРТУРОВНА.jpg"
+    },
+
+    {
+        place: 1,
+
+        name:
+            "Торговкина Татьяна Алексеевна",
+
+        photo:
+            "photos/Торговкина Татьяна.png",
+
+        diploma:
+            "diplomas/ТОРГОВКИНА ТАТЬЯНА АЛЕКСЕЕВНА.jpg"
+    },
+
+    {
+        place: 1,
+
+        name:
+            "Кинёва Екатерина Альбертовна",
+
+        photo:
+            "photos/КИНЁВА ЕКАТЕРИНА АЛЬБЕРТОВНА.jpeg",
+
+        diploma:
+            "diplomas/КИНЁВА ЕКАТЕРИНА АЛЬБЕРТОВНА.jpg"
+    },
 
 
-  const supabaseClient =
-    supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+    /* =========================
+       2 МЕСТО
+    ========================= */
+
+    {
+        place: 2,
+
+        name:
+            "Андреева Марина Александровна",
+
+        photo:
+            "photos/АНДРЕЕВА МАРИНА АЛЕКСАНДРОВНА.jpg",
+
+        diploma:
+            "diplomas/АНДРЕЕВА МАРИНА АЛЕКСАНДРОВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Борькова Наталья Викторовна",
+
+        photo:
+            "photos/БОРЬКОВА НАТАЛЬЯ ВИКТОРОВНА.jpg",
+
+        diploma:
+            "diplomas/БОРЬКОВА НАТАЛЬЯ ВИКТОРОВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Ахметова Жұпар Жанболатқызы",
+
+        photo:
+            "photos/АХМЕТОВА ЖҰПАР ЖАНБОЛАТҚЫЗЫ.jpg",
+
+        diploma:
+            "diplomas/АХМЕТОВА ЖҰПАР ЖАНБОЛАТҚЫЗЫ.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Жексембина Вероника Минеасхатовна",
+
+        photo:
+            "photos/Жексембина Вероника МинеасхатовнаМ..jpeg",
+
+        diploma:
+            "diplomas/ЖЕКСЕМБИНА ВЕРОНИКА МИНЕАСХАТОВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Мешел Кулзира",
+
+        photo:
+            "photos/Мешел Күлзира.jpeg",
+
+        diploma:
+            "diplomas/МЕШЕЛ КҮЛЗИРА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Нугуманова Гульмира Тлегеновна",
+
+        photo:
+            "photos/Нугуманова Гульмира.jpeg",
+
+        diploma:
+            "diplomas/НУГУМАНОВА ГУЛЬМИРА ТЛЕГЕНОВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Кыдырбаева Индира Алпысовна",
+
+        photo:
+            "photos/КЫДЫРБАЕВА ИНДИРА АЛПЫСОВНА.jpeg",
+
+        diploma:
+            "diplomas/КЫДЫРБАЕВА ИНДИРА АЛПЫСОВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Шакубаева Майраш Тулебаевна",
+
+        photo:
+            "photos/Шакубаева Майраш Тулебаевна.jpeg",
+
+        diploma:
+            "diplomas/ШАКУБАЕВА МАЙРАШ ТУЛЕБАЕВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Алдабергенова Анар Молдахметкызы",
+
+        photo:
+            "photos/Алдабергенова Анар Молдахметкызы.jpeg",
+
+        diploma:
+            "diplomas/АЛДАБЕРГЕНОВА АНАР МОЛДАХМЕТҚЫЗЫ.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Шинкарёва Елена Александровна",
+
+        photo:
+            "photos/Шинкарёва Елена Александровна.jpeg",
+
+        diploma:
+            "diplomas/Шинкарева.jpeg"
+    },
+    {
+        place: 2,
+
+        name:
+            "Олейникова Ольга Валерьевна",
+
+        photo:
+            "photos/Олейникова Ольга Валерьевна.jpeg",
+
+        diploma:
+            "diplomas/ОЛЕЙНИКОВА ОЛЬГА ВАЛЕРЬЕВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Волгина Ирина Витальевна",
+
+        photo:
+            "photos/ВОЛГИНА ИРИНА ВИТАЛЬЕВНА.jpeg", 
+
+        diploma:
+            "diplomas/ВОЛГИНА ИРИНА ВИТАЛЬЕВНА.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Дүйсенбі Гүлбағдан Неғметоллақызы",
+
+        photo:
+            "photos/ДҮЙСЕНБІ ГҮЛБАҒДАН НЕҒМЕТОЛЛАҚЫЗЫ.jpeg",
+
+        diploma:
+            "diplomas/ДҮЙСЕНБІ ГҮЛБАҒДАН НЕҒМЕТОЛЛАҚЫЗЫ.jpg"
+    },
+
+    {
+        place: 2,
+
+        name:
+            "Коваль Татьяна Николаевна",
+
+        photo:
+            "photos/КОВАЛЬ ТАТЬЯНА НИКОЛАЕВНА.jpeg",
+
+        diploma:
+            "diplomas/КОВАЛЬ ТАТЬЯНА НИКОЛАЕВНА.jpg"
+    },
 
 
-  /* =====================================================
-     VARIABLES
-  ===================================================== */
+    /* =========================
+       3 МЕСТО
+    ========================= */
 
-  let people = [];
+    {
+    place: 3,
+    name: "Дробышева Елена Васильевна",
+    photo: "photos/ДРОБЫШЕВА ЕЛЕНА ВАСИЛЬЕВНА.jpg",
+    diploma: "diplomas/ДРОБЫШЕВА ЕЛЕНА ВАСИЛЬЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Гаер Ирина Александровна",
+    photo: "photos/ГАЕР ИРИНА АЛЕКСАНДРОВНА.jpg",
+    diploma: "diplomas/ГАЕР ИРИНА АЛЕКСАНДРОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Оразалина Салтанат Каппасовна",
+    photo: "photos/Оразалина Салтанат Каппасовна.jpg",
+    diploma: "diplomas/ОРАЗАЛИНА САЛТАНАТ КАППАСОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Жамухамбетова Гульжан Сейтжановна",
+    photo: "photos/Жамухамбетова Гульжан Сейтжановна.jpeg",
+    diploma: "diplomas/ЖАМУХАМБЕТОВА ГУЛЬЖАН СЕЙТЖАНОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Боранбаева Айтолқын Бейсенжанқызы",
+    photo: "photos/Боранбаева Ақтолқын Бейсенжанқызы.jpeg",
+    diploma: "diplomas/БОРАНБАЕВА АЙТОЛҚЫН БЕЙСЕНЖАНҚЫЗЫ.jpg"
+},
+{
+    place: 3,
+    name: "Айсина Айгуль Сардаровна",
+    photo: "photos/Айсина Айгуль Сардаровна.jpg",
+    diploma: "diplomas/АЙСИНА АЙГУЛЬ САРДАРОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Рамазанова Балжан Жанмолдиновна",
+    photo: "photos/Рамазанова Балжан.jpeg",
+    diploma: "diplomas/РАМАЗАНОВА БАЛЖАН ЖАНМОЛДИНОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Умарова Гульжан Ертаевна",
+    photo: "photos/Умарова Гульжан.jpeg",
+    diploma: "diplomas/УМАРОВА ГУЛЬЖАН ЕРТАЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Олжабаева Аклима Кордомбаевна",
+    photo: "photos/Олжабаева Аклима.jpeg",
+    diploma: "diplomas/ОЛЖАБАЕВА АКЛИМА КОРДОМБАЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Осипова Алла Анатольевна",
+    photo: "photos/Осипова Алла Анатольевна.PNG",
+    diploma: "diplomas/ОСИПОВА АЛЛА АНАТОЛЬЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Канатбекова Гульнара Сериковна",
+    photo: "photos/Канатбекова Гульнара Сериковна.jpeg",
+    diploma: "diplomas/КАНАТБЕКОВА ГУЛЬНАРА СЕРИКОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Жунусова Алма Балышевна",
+    photo: "photos/Жунусова Алма Балышевна.jpeg", 
+    diploma: "diplomas/ЖУНУСОВА АЛМА БАЛЫШЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Ауезова Замзагуль Тургановна",
+    photo: "photos/Ауезова Замзагуль Тургановна.фото.jpg",
+    diploma: "diplomas/Замзагуль.jpeg" 
+},
+{
+    place: 3,
+    name: "Аманжол Ақбота",
+    photo: "photos/Аманжол Ақбота.jpeg",
+    diploma: "diplomas/АМАНЖОЛ АҚБОТА.jpg"
+},
+{
+    place: 3,
+    name: "Өтетілеу Әйгерім Өтетілеуқызы",
+    photo: "photos/Өтетілеу Әйгерім Өтетілеуқызы.jpeg",
+    diploma: "diplomas/Айгерим.jpeg"
+},
+{
+    place: 3,
+    name: "Кулагина Ирина Николаевна",
+    photo: "photos/Кулагина Ирина Николаевна.jpg",
+    diploma: "diplomas/КУЛАГИНА ИРИНА НИКОЛАЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Амренова Алтынай Алтынбековна",
+    photo: "photos/АМРЕНОВА АЛТЫНАЙ АЛТЫНБЕКОВНА.jpeg",
+    diploma: "diplomas/АМРЕНОВА АЛТЫНАЙ АЛТЫНБЕКОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Маркевич Светлана Сергеевна",
+    photo: "photos/МАРКЕВИЧ СВЕТЛАНА СЕРГЕЕВНА.jpeg",
+    diploma: "diplomas/МАРКЕВИЧ СВЕТЛАНА СЕРГЕЕВНА.jpg"
+},
+{
+    place: 3,
+    name: "Шакубаева Инна Владимировна",
+    photo: "photos/ШАКУБАЕВА ИННА ВЛАДИМИРОВНА.jpeg",
+    diploma: "diplomas/ШАКУБАЕВА ИННА ВЛАДИМИРОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Жумабекова Айгуль Мусылманбековна",
+    photo: "photos/ЖУМАБЕКОВА АЙГУЛЬ МУСЫЛМАНБЕКОВНА.jpeg",
+    diploma: "diplomas/ЖУМАБЕКОВА АЙГУЛЬ МУСЫЛМАНБЕКОВНА.jpg"
+},
+{
+    place: 3,
+    name: "Кравец Марина Петровна",
+    photo: "photos/КРАВЕЦ МАРИНА ПЕТРОВНА.jpeg",
+    diploma: "diplomas/КРАВЕЦ МАРИНА ПЕТРОВНА.jpg"
+},
+ {
+    place: 3,
+    name: "Серова Татьяна Александровна",
+    photo: "photos/.jpeg",
+    diploma: "diplomas/СЕРОВА ТАТЬЯНА АЛЕКСАНДРОВНА.jpg"
+},
+ 
 
-  let editingId = null;
 
-  let fireworksAnimation = null;
+];
 
-  let resizeHandler = null;
+/* =========================================================
+   VARIABLES
+========================================================= */
 
+let currentPlace = 1;
 
-  /* =====================================================
-     STATUS
-  ===================================================== */
+let currentIndex = 0;
 
-  function showError(message) {
+let currentPeople = [];
 
-    const status =
-      document.getElementById("status");
+/* =========================================================
+   TROPHY
+========================================================= */
 
-    status.textContent =
-      message;
+function trophyHTML(place){
 
-    status.className =
-      "status error";
-  }
-
-
-  function clearError() {
-
-    const status =
-      document.getElementById("status");
-
-    status.textContent = "";
-
-    status.className =
-      "status";
-  }
-
-
-  /* =====================================================
-     LOAD PEOPLE
-  ===================================================== */
-
-  async function loadPeople() {
-
-    clearError();
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("awards")
-        .select("*")
-        .order(
-          "place",
-          {
-            ascending: true
-          }
-        );
-
-
-    if (error) {
-
-      console.error(error);
-
-      showError(
-        "Не удалось загрузить список: " +
-        error.message
-      );
-
-      return;
+    if(place > 3){
+        return "";
     }
 
+    let star = "★";
 
-    people =
-      data || [];
+    if(place === 2){
+        star = "Ⅱ";
+    }
 
+    if(place === 3){
+        star = "Ⅲ";
+    }
 
-    renderRanking();
+    return `
+        <div class="trophy">
 
-    renderAdmin();
-  }
+            <div class="trophy-cup"></div>
 
+            <div class="trophy-star">
+                ${star}
+            </div>
 
-  /* =====================================================
-     REALTIME
-  ===================================================== */
+            <div class="trophy-stem"></div>
 
-  supabaseClient
-    .channel("awards-live")
-    .on(
-      "postgres_changes",
-      {
-        event: "*",
-        schema: "public",
-        table: "awards"
-      },
-      () => {
+            <div class="trophy-base1"></div>
 
-        loadPeople();
-
-      }
-    )
-    .subscribe();
-
-
-  /* =====================================================
-     RENDER RANKING
-  ===================================================== */
-
-  function renderRanking() {
-
-    const ranking =
-      document.getElementById("ranking");
-
-
-    ranking.innerHTML = "";
-
-
-    const sorted =
-      [...people].sort(
-        (a, b) =>
-          Number(a.place) -
-          Number(b.place)
-      );
-
-
-    if (sorted.length === 0) {
-
-      ranking.innerHTML = `
-
-        <div class="empty">
-
-          <div class="empty-icon">
-            ✦
-          </div>
-
-          Список пока пуст
+            <div class="trophy-base2"></div>
 
         </div>
+    `;
+}
 
-      `;
+/* =========================================================
+   ГЛАВНАЯ
+========================================================= */
 
-      return;
-    }
+function renderPlaces(){
 
+    const container =
+        document.getElementById("places");
 
-    sorted.forEach(person => {
+    container.innerHTML = "";
 
-      const card =
+    /* =====================================================
+       1 МЕСТО
+    ===================================================== */
+
+    const first =
         document.createElement("div");
 
+    first.className =
+        "first-place";
 
-      let className = "";
+    first.onclick =
+        () => openPlace(1);
 
+    first.innerHTML = `
 
-      if (
-        Number(person.place) === 1
-      ) {
+        <div class="first-content">
 
-        className = "first";
+            <div class="place-small">
+                Главное достижение
+            </div>
 
-      }
+            <div class="first-number">
 
+                1
 
-      if (
-        Number(person.place) === 2
-      ) {
+                <span>
+                    место
+                </span>
 
-        className = "second";
+            </div>
 
-      }
+            <div class="first-text">
+                Открыть результаты
+            </div>
 
+        </div>
 
-      if (
-        Number(person.place) === 3
-      ) {
+        <div class="trophy-area">
 
-        className = "third";
+            ${trophyHTML(1)}
 
-      }
+        </div>
 
+        <div class="first-arrow">
+            →
+        </div>
 
-      card.className =
-        `person-card ${className}`;
+    `;
 
+    container.appendChild(first);
 
-      card.onclick =
-        () => openPerson(person.id);
+    /* =====================================================
+       2 + 3 МЕСТО
+    ===================================================== */
 
+    const row =
+        document.createElement("div");
 
-      const photo =
-        person.photo
+    row.className =
+        "podium-row";
 
-        ? `
-          <img
-            class="avatar"
-            src="${escapeAttribute(person.photo)}"
-            alt=""
-          >
-        `
+    [2,3].forEach(place => {
 
-        : `
-          <div class="avatar-placeholder">
-            ✦
-          </div>
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "podium-card " +
+            (
+                place === 2
+                    ? "second"
+                    : "third"
+            );
+
+        card.onclick =
+            () => openPlace(place);
+
+        card.innerHTML = `
+
+            <div style="flex:1">
+
+                <div class="podium-number">
+
+                    ${place}
+
+                    <span>
+                        место
+                    </span>
+
+                </div>
+
+                <div class="podium-info">
+                    Открыть результаты →
+                </div>
+
+            </div>
+
+            <div class="trophy-area">
+
+                ${trophyHTML(place)}
+
+            </div>
+
         `;
 
-
-      card.innerHTML = `
-
-        <div class="place">
-
-          <div class="place-number">
-            ${person.place}
-          </div>
-
-          <span class="place-text">
-            место
-          </span>
-
-        </div>
-
-
-        ${photo}
-
-
-        <div class="person-info">
-
-          <div class="person-name">
-            ${escapeHTML(person.name)}
-          </div>
-
-          <div class="person-sub">
-            Посмотреть награду
-          </div>
-
-        </div>
-
-
-        <div class="arrow">
-          ›
-        </div>
-
-      `;
-
-
-      ranking.appendChild(card);
+        row.appendChild(card);
 
     });
 
-  }
+    container.appendChild(row);
+}
 
+/* =========================================================
+   ОТКРЫТИЕ МЕСТА
 
-  /* =====================================================
-     OPEN PERSON
-  ===================================================== */
+   ВАЖНО:
+   СНАЧАЛА ПОКАЗЫВАЕМ GIF.
+========================================================= */
 
-  function openPerson(id) {
+function openPlace(place){
 
-    const person =
-      people.find(
-        p => String(p.id) === String(id)
-      );
+    currentPlace = place;
 
-
-    if (!person) {
-      return;
-    }
-
-
-    document
-      .getElementById("profileName")
-      .textContent =
-        person.name;
-
-
-    document
-      .getElementById("profilePlace")
-      .textContent =
-        `🏆 ${person.place} место`;
-
-
-    const photoContainer =
-      document.getElementById(
-        "profilePhoto"
-      );
-
-
-    if (person.photo) {
-
-      const image =
-        document.createElement("img");
-
-      image.className =
-        "big-photo";
-
-      image.src =
-        person.photo;
-
-      image.alt = "";
-
-      photoContainer.innerHTML = "";
-
-      photoContainer.appendChild(
-        image
-      );
-
-    } else {
-
-      photoContainer.innerHTML = `
-
-        <div class="big-placeholder">
-          ✦
-        </div>
-
-      `;
-
-    }
-
-
-    const diplomaContainer =
-      document.getElementById(
-        "profileDiploma"
-      );
-
-
-    diplomaContainer.innerHTML = "";
-
-
-    if (person.diploma) {
-
-      const image =
-        document.createElement("img");
-
-      image.className =
-        "diploma";
-
-      image.src =
-        person.diploma;
-
-      image.alt =
-        "Диплом";
-
-      image.onclick =
-        () => openViewer(
-          person.diploma
+    currentPeople =
+        winners.filter(
+            person =>
+                person.place === place
         );
 
+    if(!currentPeople.length){
 
-      diplomaContainer.appendChild(
-        image
-      );
+        alert(
+            "Для " +
+            place +
+            " места пока нет добавленных призёров."
+        );
 
-    } else {
-
-      diplomaContainer.innerHTML = `
-
-        <div class="no-diploma">
-          Диплом не добавлен
-        </div>
-
-      `;
-
+        return;
     }
 
+    currentIndex = 0;
 
-    document
-      .getElementById("personPage")
-      .classList
-      .add("active");
+    const page =
+        document.getElementById(
+            "winnerPage"
+        );
 
-
-    document.body.style.overflow =
-      "hidden";
-
-
-    startFireworks();
-
-  }
-
-
-  function closePerson() {
-
-    document
-      .getElementById("personPage")
-      .classList
-      .remove("active");
-
+    page.className =
+        "winner-page active place-" +
+        place;
 
     document.body.style.overflow =
-      "";
-
-
-    stopFireworks();
-
-  }
-
-
-  /* =====================================================
-     IMAGE VIEWER
-  ===================================================== */
-
-  function openViewer(url) {
-
-    document
-      .getElementById("viewerImage")
-      .src =
-        url;
-
-
-    document
-      .getElementById("viewer")
-      .classList
-      .add("active");
-
-  }
-
-
-  function closeViewer() {
-
-    document
-      .getElementById("viewer")
-      .classList
-      .remove("active");
-
-  }
-
-
-  /* =====================================================
-     LOGIN
-  ===================================================== */
-
-  function showLogin() {
-
-    document
-      .getElementById("login")
-      .classList
-      .add("active");
-
-
-    setTimeout(
-      () => {
-
-        document
-          .getElementById("password")
-          .focus();
-
-      },
-      100
-    );
-
-  }
-
-
-  function hideLogin() {
-
-    document
-      .getElementById("login")
-      .classList
-      .remove("active");
-
-
-    document
-      .getElementById("password")
-      .value = "";
-
-
-    document
-      .getElementById("loginError")
-      .style.display =
-        "none";
-
-  }
-
-
-  function loginAdmin() {
-
-    const password =
-      document
-        .getElementById("password")
-        .value;
-
-
-    if (
-      password === "123321"
-    ) {
-
-      hideLogin();
-
-
-      document
-        .getElementById("admin")
-        .classList
-        .add("active");
-
-
-      renderAdmin();
-
-
-      document.body.style.overflow =
         "hidden";
 
-    } else {
+    /* ==============================================
+       КАЖДЫЙ РАЗ СНОВА ПОКАЗЫВАЕМ GIF
+    ============================================== */
 
-      document
-        .getElementById("loginError")
-        .style.display =
-          "block";
-
-    }
-
-  }
-
-
-  function closeAdmin() {
-
-    document
-      .getElementById("admin")
-      .classList
-      .remove("active");
-
-
-    document.body.style.overflow =
-      "";
-
-
-    resetForm();
-
-  }
-
-
-  /* =====================================================
-     UPLOAD FILE
-  ===================================================== */
-
-  async function uploadFile(
-    file,
-    folder
-  ) {
-
-    if (!file) {
-      return null;
-    }
-
-
-    const extension =
-      file.name
-        .split(".")
-        .pop()
-        .toLowerCase();
-
-
-    const randomName =
-      crypto.randomUUID();
-
-
-    const path =
-      `${folder}/${Date.now()}-${randomName}.${extension}`;
-
-
-    const {
-      error
-    } =
-      await supabaseClient
-        .storage
-        .from("awards")
-        .upload(
-          path,
-          file,
-          {
-            cacheControl: "3600",
-            upsert: false
-          }
+    const intro =
+        document.getElementById(
+            "winnerIntro"
         );
 
-
-    if (error) {
-      throw error;
-    }
-
-
-    const {
-      data
-    } =
-      supabaseClient
-        .storage
-        .from("awards")
-        .getPublicUrl(path);
-
-
-    return data.publicUrl;
-
-  }
-
-
-  /* =====================================================
-     DELETE STORAGE FILE
-  ===================================================== */
-
-  async function deleteStorageFile(url) {
-
-    if (!url) {
-      return;
-    }
-
-
-    try {
-
-      const marker =
-        "/storage/v1/object/public/awards/";
-
-
-      const index =
-        url.indexOf(marker);
-
-
-      if (index === -1) {
-        return;
-      }
-
-
-      const path =
-        decodeURIComponent(
-          url.substring(
-            index + marker.length
-          )
-        );
-
-
-      await supabaseClient
-        .storage
-        .from("awards")
-        .remove([path]);
-
-
-    } catch (error) {
-
-      console.error(
-        "Ошибка удаления файла:",
-        error
-      );
-
-    }
-
-  }
-
-
-  /* =====================================================
-     SAVE PERSON
-  ===================================================== */
-
-  async function savePerson() {
-
-    const saveButton =
-      document.getElementById(
-        "saveButton"
-      );
-
-
-    const place =
-      document
-        .getElementById("placeInput")
-        .value
-        .trim();
-
-
-    const name =
-      document
-        .getElementById("nameInput")
-        .value
-        .trim();
-
-
-    const photoFile =
-      document
-        .getElementById("photoInput")
-        .files[0];
-
-
-    const diplomaFile =
-      document
-        .getElementById("diplomaInput")
-        .files[0];
-
-
-    if (
-      !place ||
-      !name
-    ) {
-
-      alert(
-        "Введите место и имя"
-      );
-
-      return;
-
-    }
-
-
-    if (
-      Number(place) < 1
-    ) {
-
-      alert(
-        "Место должно быть от 1 и выше"
-      );
-
-      return;
-
-    }
-
-
-    const samePlace =
-      people.find(
-        person =>
-
-          Number(person.place) ===
-            Number(place)
-
-          &&
-
-          String(person.id) !==
-            String(editingId)
-      );
-
-
-    if (samePlace) {
-
-      alert(
-        "Это место уже занято"
-      );
-
-      return;
-
-    }
-
-
-    saveButton.disabled = true;
-
-    saveButton.textContent =
-      "Загрузка...";
-
-
-    try {
-
-      let photoURL = null;
-
-      let diplomaURL = null;
-
-
-      if (photoFile) {
-
-        photoURL =
-          await uploadFile(
-            photoFile,
-            "people"
-          );
-
-      }
-
-
-      if (diplomaFile) {
-
-        diplomaURL =
-          await uploadFile(
-            diplomaFile,
-            "diplomas"
-          );
-
-      }
-
-
-      /* =====================
-         EDIT
-      ===================== */
-
-      if (editingId !== null) {
-
-        const oldPerson =
-          people.find(
-            p =>
-              String(p.id) ===
-              String(editingId)
-          );
-
-
-        if (!oldPerson) {
-          throw new Error(
-            "Участник не найден"
-          );
-        }
-
-
-        const updateData = {
-
-          place:
-            Number(place),
-
-          name:
-            name
-
-        };
-
-
-        if (photoURL) {
-
-          updateData.photo =
-            photoURL;
-
-        }
-
-
-        if (diplomaURL) {
-
-          updateData.diploma =
-            diplomaURL;
-
-        }
-
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from("awards")
-            .update(updateData)
-            .eq(
-              "id",
-              editingId
-            );
-
-
-        if (error) {
-          throw error;
-        }
-
-
-        if (
-          photoURL &&
-          oldPerson.photo
-        ) {
-
-          await deleteStorageFile(
-            oldPerson.photo
-          );
-
-        }
-
-
-        if (
-          diplomaURL &&
-          oldPerson.diploma
-        ) {
-
-          await deleteStorageFile(
-            oldPerson.diploma
-          );
-
-        }
-
-      }
-
-
-      /* =====================
-         CREATE
-      ===================== */
-
-      else {
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from("awards")
-            .insert({
-
-              place:
-                Number(place),
-
-              name:
-                name,
-
-              photo:
-                photoURL,
-
-              diploma:
-                diplomaURL
-
-            });
-
-
-        if (error) {
-          throw error;
-        }
-
-      }
-
-
-      resetForm();
-
-
-      await loadPeople();
-
-
-      alert(
-        editingId === null
-          ? "Сохранено"
-          : "Изменения сохранены"
-      );
-
-
-    } catch (error) {
-
-      console.error(error);
-
-
-      alert(
-        "Ошибка: " +
-        (
-          error.message ||
-          "не удалось сохранить"
-        )
-      );
-
-    } finally {
-
-      saveButton.disabled =
-        false;
-
-      saveButton.textContent =
-        "Сохранить";
-
-    }
-
-  }
-
-
-  /* =====================================================
-     ADMIN LIST
-  ===================================================== */
-
-  function renderAdmin() {
-
-    const list =
-      document.getElementById(
-        "adminList"
-      );
-
-
-    if (!list) {
-      return;
-    }
-
-
-    list.innerHTML = "";
-
-
-    const sorted =
-      [...people].sort(
-        (a, b) =>
-          Number(a.place) -
-          Number(b.place)
-      );
-
-
-    if (
-      sorted.length === 0
-    ) {
-
-      list.innerHTML = `
-
-        <div style="
-          color:#737985;
-          padding:10px 0;
-        ">
-          Список пуст
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    sorted.forEach(person => {
-
-      const item =
-        document.createElement(
-          "div"
-        );
-
-
-      item.className =
-        "admin-person";
-
-
-      const place =
-        document.createElement(
-          "div"
-        );
-
-      place.className =
-        "admin-place";
-
-      place.textContent =
-        "#" + person.place;
-
-
-      const name =
-        document.createElement(
-          "div"
-        );
-
-      name.className =
-        "admin-person-name";
-
-      name.textContent =
-        person.name;
-
-
-      const editButton =
-        document.createElement(
-          "button"
-        );
-
-      editButton.className =
-        "edit-btn";
-
-      editButton.textContent =
-        "Изменить";
-
-      editButton.onclick =
-        () =>
-          editPerson(
-            person.id
-          );
-
-
-      const deleteButton =
-        document.createElement(
-          "button"
-        );
-
-      deleteButton.className =
-        "delete-btn";
-
-      deleteButton.textContent =
-        "×";
-
-      deleteButton.onclick =
-        () =>
-          deletePerson(
-            person.id
-          );
-
-
-      item.append(
-        place,
-        name,
-        editButton,
-        deleteButton
-      );
-
-
-      list.appendChild(item);
-
-    });
-
-  }
-
-
-  /* =====================================================
-     EDIT PERSON
-  ===================================================== */
-
-  function editPerson(id) {
-
-    const person =
-      people.find(
-        p =>
-          String(p.id) ===
-          String(id)
-      );
-
-
-    if (!person) {
-      return;
-    }
-
-
-    editingId =
-      person.id;
-
-
-    document
-      .getElementById("formTitle")
-      .textContent =
-        "Изменить участника";
-
-
-    document
-      .getElementById("placeInput")
-      .value =
-        person.place;
-
-
-    document
-      .getElementById("nameInput")
-      .value =
-        person.name;
-
-
-    document
-      .getElementById("saveButton")
-      .textContent =
-        "Сохранить изменения";
-
-
-    document
-      .getElementById("admin")
-      .scrollTo({
-
-        top: 0,
-
-        behavior:
-          "smooth"
-
-      });
-
-  }
-
-
-  /* =====================================================
-     DELETE PERSON
-  ===================================================== */
-
-  async function deletePerson(id) {
-
-    const person =
-      people.find(
-        p =>
-          String(p.id) ===
-          String(id)
-      );
-
-
-    if (!person) {
-      return;
-    }
-
-
-    const confirmed =
-      confirm(
-        `Удалить ${person.name}?`
-      );
-
-
-    if (!confirmed) {
-      return;
-    }
-
-
-    try {
-
-      const {
-        error
-      } =
-        await supabaseClient
-          .from("awards")
-          .delete()
-          .eq(
-            "id",
-            person.id
-          );
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      await deleteStorageFile(
-        person.photo
-      );
-
-
-      await deleteStorageFile(
-        person.diploma
-      );
-
-
-      if (
-        String(editingId) ===
-        String(person.id)
-      ) {
-
-        resetForm();
-
-      }
-
-
-      await loadPeople();
-
-
-    } catch (error) {
-
-      console.error(error);
-
-
-      alert(
-        "Не удалось удалить: " +
-        error.message
-      );
-
-    }
-
-  }
-
-
-  /* =====================================================
-     RESET FORM
-  ===================================================== */
-
-  function resetForm() {
-
-    editingId = null;
-
-
-    document
-      .getElementById("formTitle")
-      .textContent =
-        "Добавить участника";
-
-
-    document
-      .getElementById("placeInput")
-      .value = "";
-
-
-    document
-      .getElementById("nameInput")
-      .value = "";
-
-
-    document
-      .getElementById("photoInput")
-      .value = "";
-
-
-    document
-      .getElementById("diplomaInput")
-      .value = "";
-
-
-    document
-      .getElementById("saveButton")
-      .textContent =
-        "Сохранить";
-
-  }
-
-
-  /* =====================================================
-     FIREWORKS
-  ===================================================== */
-
-  function startFireworks() {
-
-    stopFireworks();
-
-
-    const canvas =
-      document.getElementById(
-        "fireworks"
-      );
-
-
-    const ctx =
-      canvas.getContext("2d");
-
-
-    let width =
-      window.innerWidth;
-
-
-    let height =
-      window.innerHeight;
-
-
-    let particles = [];
-
-    let rockets = [];
-
-
-    const colors = [
-
-      "#ffd76a",
-      "#ffffff",
-      "#ff8a65",
-      "#82b1ff",
-      "#e99cff",
-      "#7dffb2"
-
-    ];
-
-
-    function resize() {
-
-      const ratio =
-        window.devicePixelRatio || 1;
-
-
-      width =
-        window.innerWidth;
-
-
-      height =
-        window.innerHeight;
-
-
-      canvas.width =
-        width * ratio;
-
-
-      canvas.height =
-        height * ratio;
-
-
-      canvas.style.width =
-        width + "px";
-
-
-      canvas.style.height =
-        height + "px";
-
-
-      ctx.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
-      );
-
-    }
-
-
-    resize();
-
-
-    resizeHandler =
-      resize;
-
-
-    window.addEventListener(
-      "resize",
-      resizeHandler
+    intro.classList.remove(
+        "hide"
     );
 
+    /* ==============================================
+       ФЕЙЕРВЕРК ПОКА НЕ ИГРАЕТ
+    ============================================== */
 
-    function createExplosion(
-      x,
-      y
-    ) {
-
-      const count =
-        45 +
-        Math.floor(
-          Math.random() * 35
+    const video =
+        document.getElementById(
+            "fireworksVideo"
         );
 
+    try{
 
-      const color =
-        colors[
-          Math.floor(
-            Math.random() *
-            colors.length
-          )
+        video.pause();
+
+        video.currentTime = 0;
+
+    }
+    catch(e){}
+
+    /* ==============================================
+       ПРИЗЁР ЗАРАНЕЕ ЗАГРУЖАЕТСЯ ЗА GIF
+    ============================================== */
+
+    renderWinner();
+}
+
+/* =========================================================
+   НАЖАЛ НА GIF
+
+   GIF УХОДИТ.
+   ПОЯВЛЯЕТСЯ ПРИЗЁР.
+   ЗАПУСКАЮТСЯ ФЕЙЕРВЕРКИ.
+========================================================= */
+
+function showWinner(){
+
+    const intro =
+        document.getElementById(
+            "winnerIntro"
+        );
+
+    intro.classList.add(
+        "hide"
+    );
+
+    const video =
+        document.getElementById(
+            "fireworksVideo"
+        );
+
+    try{
+
+        video.currentTime = 0;
+
+        video.play().catch(
+            () => {}
+        );
+
+    }
+    catch(e){}
+}
+
+/* =========================================================
+   ПОКАЗ ПРИЗЁРА
+========================================================= */
+
+function renderWinner(){
+
+    if(!currentPeople.length){
+        return;
+    }
+
+    const person =
+        currentPeople[
+            currentIndex
         ];
 
+    /* МЕСТО */
 
-      for (
-        let i = 0;
-        i < count;
-        i++
-      ) {
+    document.getElementById(
+        "winnerPlace"
+    ).textContent =
+        currentPlace +
+        " место";
 
-        const angle =
-          Math.random() *
-          Math.PI *
-          2;
+    /* ИМЯ */
 
+    document.getElementById(
+        "winnerName"
+    ).textContent =
+        person.name;
 
-        const speed =
-          1.5 +
-          Math.random() *
-          5;
+    /* ФОТО */
 
+    document.getElementById(
+        "winnerPhoto"
+    ).src =
+        person.photo;
 
-        particles.push({
+    /* ДИПЛОМ */
 
-          x: x,
+    document.getElementById(
+        "winnerDiploma"
+    ).src =
+        person.diploma;
 
-          y: y,
+    /* СЧЁТЧИК */
 
-          vx:
-            Math.cos(angle) *
-            speed,
+    document.getElementById(
+        "personIndex"
+    ).textContent =
+        `${currentIndex + 1} / ${currentPeople.length}`;
 
-          vy:
-            Math.sin(angle) *
-            speed,
+    /* КУБОК */
 
-          life: 1,
+    const trophy =
+        document.getElementById(
+            "winnerTrophy"
+        );
 
-          decay:
-            .012 +
-            Math.random() *
-            .013,
+    trophy.innerHTML =
+        trophyHTML(
+            currentPlace
+        );
 
-          size:
-            1 +
-            Math.random() *
-            2.3,
+    /* НАЗАД */
 
-          color:
-            color
+    const prev =
+        document.getElementById(
+            "prevButton"
+        );
 
-        });
+    prev.disabled =
+        currentIndex === 0;
 
-      }
+    /* ДАЛЕЕ */
 
-    }
+    const next =
+        document.getElementById(
+            "nextButton"
+        );
 
+    if(
+        currentIndex ===
+        currentPeople.length - 1
+    ){
 
-    function createRocket() {
+        next.textContent =
+            "Вернуться на главную";
 
-      rockets.push({
-
-        x:
-          width *
-          (
-            .12 +
-            Math.random() *
-            .76
-          ),
-
-        y:
-          height + 20,
-
-        targetY:
-          height *
-          (
-            .12 +
-            Math.random() *
-            .45
-          ),
-
-        speed:
-          7 +
-          Math.random() *
-          4,
-
-        trail: []
-
-      });
+        next.onclick =
+            goHome;
 
     }
+    else{
+
+        next.textContent =
+            "Далее →";
+
+        next.onclick =
+            nextWinner;
+    }
+
+    const scroll =
+        document.querySelector(
+            ".winner-scroll"
+        );
+
+    scroll.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+/* =========================================================
+   СЛЕДУЮЩИЙ
+========================================================= */
+
+function nextWinner(){
+
+    if(
+        currentIndex <
+        currentPeople.length - 1
+    ){
+
+        /* ПЕРЕХОДИМ К СЛЕДУЮЩЕМУ ПРИЗЁРУ */
+
+        currentIndex++;
 
 
-    function animate() {
+        /* ОСТАНАВЛИВАЕМ ФЕЙЕРВЕРК */
 
-      ctx.clearRect(
-        0,
-        0,
-        width,
-        height
-      );
-
-
-      for (
-        let i =
-          rockets.length - 1;
-
-        i >= 0;
-
-        i--
-      ) {
-
-        const r =
-          rockets[i];
-
-
-        r.trail.push({
-
-          x: r.x,
-
-          y: r.y
-
-        });
-
-
-        if (
-          r.trail.length > 13
-        ) {
-
-          r.trail.shift();
-
-        }
-
-
-        r.trail.forEach(
-          (t, index) => {
-
-            ctx.beginPath();
-
-            ctx.arc(
-              t.x,
-              t.y,
-              1.5,
-              0,
-              Math.PI * 2
+        const video =
+            document.getElementById(
+                "fireworksVideo"
             );
 
-            ctx.fillStyle =
-              `rgba(255,220,130,${
-                index /
-                r.trail.length
-              })`;
+        try{
 
-            ctx.fill();
+            video.pause();
 
-          }
-        );
-
-
-        r.y -=
-          r.speed;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-          r.x,
-          r.y,
-          2.5,
-          0,
-          Math.PI * 2
-        );
-
-
-        ctx.fillStyle =
-          "#fff4bd";
-
-
-        ctx.fill();
-
-
-        if (
-          r.y <= r.targetY
-        ) {
-
-          createExplosion(
-            r.x,
-            r.y
-          );
-
-
-          rockets.splice(
-            i,
-            1
-          );
+            video.currentTime = 0;
 
         }
-
-      }
-
-
-      for (
-        let i =
-          particles.length - 1;
-
-        i >= 0;
-
-        i--
-      ) {
-
-        const p =
-          particles[i];
+        catch(e){}
 
 
-        p.x +=
-          p.vx;
+        /* ПОКАЗЫВАЕМ GIF СНОВА */
 
+        const intro =
+            document.getElementById(
+                "winnerIntro"
+            );
 
-        p.y +=
-          p.vy;
-
-
-        p.vy +=
-          .045;
-
-
-        p.vx *=
-          .992;
-
-
-        p.life -=
-          p.decay;
-
-
-        ctx.globalAlpha =
-          Math.max(
-            p.life,
-            0
-          );
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-          p.x,
-          p.y,
-          p.size,
-          0,
-          Math.PI * 2
+        intro.classList.remove(
+            "hide"
         );
 
 
-        ctx.fillStyle =
-          p.color;
+        /* ЗАРАНЕЕ МЕНЯЕМ ДАННЫЕ ПРИЗЁРА ЗА GIF */
 
+        renderWinner();
 
-        ctx.fill();
+    }
 
+}
+/* =========================================================
+   ПРЕДЫДУЩИЙ
+========================================================= */
 
-        if (
-          p.life <= 0
-        ) {
+function previousWinner(){
 
-          particles.splice(
-            i,
-            1
-          );
+    if(currentIndex > 0){
 
+        currentIndex--;
+
+        renderWinner();
+    }
+}
+
+/* =========================================================
+   НА ГЛАВНУЮ
+========================================================= */
+
+function goHome(){
+
+    const page =
+        document.getElementById(
+            "winnerPage"
+        );
+
+    page.className =
+        "winner-page";
+
+    document.body.style.overflow =
+        "";
+
+    /* СБРАСЫВАЕМ GIF */
+
+    const intro =
+        document.getElementById(
+            "winnerIntro"
+        );
+
+    intro.classList.remove(
+        "hide"
+    );
+
+    /* ОСТАНАВЛИВАЕМ ФЕЙЕРВЕРК */
+
+    const video =
+        document.getElementById(
+            "fireworksVideo"
+        );
+
+    try{
+
+        video.pause();
+
+        video.currentTime = 0;
+
+    }
+    catch(e){}
+
+    closeViewer();
+}
+
+/* =========================================================
+   ОТКРЫТИЕ ДИПЛОМА
+========================================================= */
+
+function openDiploma(){
+
+    if(!currentPeople.length){
+        return;
+    }
+
+    const person =
+        currentPeople[
+            currentIndex
+        ];
+
+    document.getElementById(
+        "viewerImage"
+    ).src =
+        person.diploma;
+
+    document.getElementById(
+        "viewer"
+    ).classList.add(
+        "active"
+    );
+}
+
+/* =========================================================
+   ЗАКРЫТИЕ ДИПЛОМА
+========================================================= */
+
+function closeViewer(){
+
+    document.getElementById(
+        "viewer"
+    ).classList.remove(
+        "active"
+    );
+}
+
+/* =========================================================
+   КЛАВИАТУРА
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        const viewer =
+            document.getElementById(
+                "viewer"
+            );
+
+        /* ==========================================
+           ЕСЛИ ОТКРЫТ ДИПЛОМ
+        ========================================== */
+
+        if(
+            viewer.classList.contains(
+                "active"
+            )
+        ){
+
+            if(
+                event.key ===
+                "Escape"
+            ){
+                closeViewer();
+            }
+
+            return;
         }
 
-      }
+        const page =
+            document.getElementById(
+                "winnerPage"
+            );
 
+        if(
+            !page.classList.contains(
+                "active"
+            )
+        ){
+            return;
+        }
 
-      ctx.globalAlpha =
-        1;
+        const intro =
+            document.getElementById(
+                "winnerIntro"
+            );
 
+        /* ==========================================
+           ЕСЛИ СЕЙЧАС GIF
+        ========================================== */
 
-      if (
-        Math.random() <
-          .035
+        if(
+            !intro.classList.contains(
+                "hide"
+            )
+        ){
 
-        &&
+            if(
+                event.key === "Enter" ||
+                event.key === " " ||
+                event.key === "ArrowRight"
+            ){
 
-        rockets.length <
-          5
-      ) {
+                showWinner();
+            }
 
-        createRocket();
+            if(
+                event.key ===
+                "Escape"
+            ){
 
-      }
+                goHome();
+            }
 
+            return;
+        }
 
-      fireworksAnimation =
-        requestAnimationFrame(
-          animate
-        );
+        /* ==========================================
+           СЛЕДУЮЩИЙ
+        ========================================== */
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ){
+
+            if(
+                currentIndex <
+                currentPeople.length - 1
+            ){
+
+                nextWinner();
+            }
+        }
+
+        /* ==========================================
+           ПРЕДЫДУЩИЙ
+        ========================================== */
+
+        if(
+            event.key ===
+            "ArrowLeft"
+        ){
+
+            previousWinner();
+        }
+
+        /* ==========================================
+           ЗАКРЫТЬ
+        ========================================== */
+
+        if(
+            event.key ===
+            "Escape"
+        ){
+
+            goHome();
+        }
 
     }
+);
 
+/* =========================================================
+   ЗАПУСК
+========================================================= */
 
-    createRocket();
-
-
-    setTimeout(
-      createRocket,
-      250
-    );
-
-
-    setTimeout(
-      createRocket,
-      500
-    );
-
-
-    animate();
-
-  }
-
-
-  function stopFireworks() {
-
-    if (
-      fireworksAnimation
-    ) {
-
-      cancelAnimationFrame(
-        fireworksAnimation
-      );
-
-
-      fireworksAnimation =
-        null;
-
-    }
-
-
-    if (
-      resizeHandler
-    ) {
-
-      window.removeEventListener(
-        "resize",
-        resizeHandler
-      );
-
-
-      resizeHandler =
-        null;
-
-    }
-
-
-    const canvas =
-      document.getElementById(
-        "fireworks"
-      );
-
-
-    const ctx =
-      canvas.getContext("2d");
-
-
-    ctx.clearRect(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-  }
-
-
-  /* =====================================================
-     ESCAPE
-  ===================================================== */
-
-  function escapeHTML(value) {
-
-    return String(value)
-
-      .replaceAll(
-        "&",
-        "&amp;"
-      )
-
-      .replaceAll(
-        "<",
-        "&lt;"
-      )
-
-      .replaceAll(
-        ">",
-        "&gt;"
-      )
-
-      .replaceAll(
-        '"',
-        "&quot;"
-      )
-
-      .replaceAll(
-        "'",
-        "&#039;"
-      );
-
-  }
-
-
-  function escapeAttribute(
-    value
-  ) {
-
-    return escapeHTML(
-      value
-    );
-
-  }
-
-
-  /* =====================================================
-     START
-  ===================================================== */
-
-  loadPeople();
+renderPlaces();
 
 </script>
 
